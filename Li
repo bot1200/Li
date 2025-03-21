@@ -442,7 +442,7 @@ local count = 0
         end
     end
     if count % 4 == 0 then
-        wait(0.5)
+        task.wait(0.3)
     end
     
     return button, label
@@ -616,6 +616,16 @@ addCorner(rainbowButton, 5)
         colorPickerPopup.Visible = not colorPickerPopup.Visible
     end)
 
+local count = 0
+for _, child in ipairs(container:GetChildren()) do
+    if child:IsA("Frame") then
+        count = count + 1
+    end
+end
+if count % 4 == 0 then
+    task.wait(0.3)
+end
+    
     return ColorPicker
 end
 function Library.addToggle(container, labelText, descriptionText, defaultState, callback)
@@ -693,6 +703,16 @@ addCorner(toggleIndicator, 6)
     end)
 
     updateToggle(defaultState)
+    
+    local count = 0
+for _, child in ipairs(container:GetChildren()) do
+    if child:IsA("Frame") then
+        count = count + 1
+    end
+end
+if count % 4 == 0 then
+    task.wait(0.3)
+end
 
     return toggleFrame, label
 end
