@@ -435,6 +435,16 @@ borderStroke.Parent = borderFrame
 
     button.MouseButton1Click:Connect(callback)
 
+local count = 0
+    for _, child in ipairs(container:GetChildren()) do
+        if child:IsA("TextButton") then
+            count = count + 1
+        end
+    end
+    if count % 4 == 0 then
+        wait(0.5)
+    end
+    
     return button, label
 end
 
@@ -1084,6 +1094,18 @@ function Library.AddKeybind(container, text, defaultKey, callback)
 	KeybindFrame.Size = UDim2.new(1, 0, 0, 40)
 	KeybindFrame.BackgroundTransparency = TransparenciaContenedor
 	addCorner(KeybindFrame, 5)
+
+    local borderFrame = Instance.new("Frame")
+borderFrame.Size = UDim2.new(1, 0, 1, 0)
+borderFrame.Position = UDim2.new(0, -2, 0, 0)
+borderFrame.BackgroundTransparency = 1
+borderFrame.ZIndex = KeybindFrame.ZIndex - 1
+borderFrame.Parent = KeybindFrame
+
+local borderStroke = Instance.new("UIStroke")
+borderStroke.Thickness = 2
+borderStroke.Color = Color3.fromRGB(255, 255, 255)
+borderStroke.Parent = borderFrame
 
 	local KeybindTitle = Instance.new("TextLabel")
 	KeybindTitle.Name = "KeybindTitle"
