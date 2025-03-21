@@ -2,7 +2,7 @@ local Library = {}
 
 local gui = Instance.new("ScreenGui")
 gui.Parent = game:GetService("CoreGui")
-print("ahhhhh")
+print("jajaj")
 local existingGui = game:GetService("CoreGui"):FindFirstChild("xdd")
 if existingGui then existingGui:Destroy() end
 
@@ -985,8 +985,8 @@ label.BackgroundTransparency = 1
 label.Parent = textboxFrame
 
 local textBox = Instance.new("TextBox")
-textBox.Size = UDim2.new(0.4, 0, 1, 0)
-textBox.Position = UDim2.new(0.6, 0, 0, 0)
+textBox.Size = UDim2.new(0, 140, 0, 30)
+textBox.Position = UDim2.new(0, 310, 0, 5)
 textBox.Text = defaultText
 textBox.PlaceholderText = placeholderText
 textBox.Font = Enum.Font.Gotham
