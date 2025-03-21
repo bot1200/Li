@@ -14,6 +14,9 @@ end
 
 local TweenService = game:GetService("TweenService")
 
+local FrameContenedor = Color3.fromRGB(0, 140, 0)
+local bordes = Color3.fromRGB(0, 140, 0)
+
 function Library:CreateUI(title, description)
     local ScreenGui = Instance.new("ScreenGui")
     ScreenGui.Parent = gui
@@ -402,7 +405,7 @@ function Library.addButton(container, buttonText, descriptionText, callback)
     button.TextSize = 12
     button.BackgroundTransparency = 0.5
     button.Font = Enum.Font.Gotham
-    button.BackgroundColor3 = Color3.fromRGB(0, 140, 0)
+    button.BackgroundColor3 = FrameContenedor
     button.TextColor3 = Color3.fromRGB(255, 255, 255)
     button.Parent = container
     addCorner(button, 5)
@@ -437,9 +440,21 @@ end
 function Library.AddColorPicker(container, labelText, defaultColor, callback)
 local ColorPicker = Instance.new("Frame")
 ColorPicker.Size = UDim2.new(1, 0, 0, 40)
-ColorPicker.BackgroundColor3 = Color3.fromRGB(0, 140, 0)
+ColorPicker.BackgroundColor3 = FrameContenedor
 ColorPicker.Parent = container
 ColorPicker.BackgroundTransparency = 0.5
+
+    local borderFrame = Instance.new("Frame")
+borderFrame.Size = UDim2.new(1, 0, 1, 0)
+borderFrame.Position = UDim2.new(0, -2, 0, 0)
+borderFrame.BackgroundTransparency = 1
+borderFrame.ZIndex = ColorPicker.ZIndex - 1
+borderFrame.Parent = ColorPicker
+
+local borderStroke = Instance.new("UIStroke")
+borderStroke.Thickness = 2
+borderStroke.Color = Color3.fromRGB(255, 255, 255)
+borderStroke.Parent = borderFrame
 
 addCorner(ColorPicker, 5)
 
@@ -595,10 +610,9 @@ end
 function Library.addToggle(container, labelText, descriptionText, defaultState, callback)
 local toggleFrame = Instance.new("Frame")
 toggleFrame.Size = UDim2.new(1, 0, 0, 40)
-toggleFrame.BackgroundColor3 = Color3.fromRGB(0, 140, 0)
+toggleFrame.BackgroundColor3 = FrameContenedor
 toggleFrame.Parent = container
 toggleFrame.BackgroundTransparency = 0.5
-
 addCorner(toggleFrame, 5)
 
     local borderFrame = Instance.new("Frame")
@@ -675,7 +689,7 @@ end
 function Library.addSlider(container, name, minValue, maxValue, defaultValue, increment, callback)
 local sliderFrame = Instance.new("Frame")
 sliderFrame.Size = UDim2.new(1, 0, 0, 40)
-sliderFrame.BackgroundColor3 = Color3.fromRGB(0, 140, 0)
+sliderFrame.BackgroundColor3 = FrameContenedor
 sliderFrame.Parent = container
 sliderFrame.BackgroundTransparency = 0.5
 
@@ -799,7 +813,7 @@ function Library.addDropdown(container, labelText, buttonText, options, callback
     local Dropdown = Instance.new("Frame")
     Dropdown.Size = UDim2.new(1, 0, 0, 40)
     Dropdown.BackgroundTransparency = 0.5
-    Dropdown.BackgroundColor3 = Color3.fromRGB(0, 140, 0)
+    Dropdown.BackgroundColor3 = FrameContenedor
     Dropdown.Parent = container
     addCorner(Dropdown, 5)
     
@@ -986,7 +1000,7 @@ textBox.Parent = textboxFrame
 
 textBox.BackgroundColor3 = Color3.fromRGB(0, 160, 0)
 textBox.TextColor3 = Color3.fromRGB(255, 255, 255)
-textboxFrame.BackgroundColor3 = Color3.fromRGB(0, 140, 0)
+textboxFrame.BackgroundColor3 = FrameContenedor
 
     if addCorner then
         addCorner(textBox, 5)
@@ -1023,7 +1037,7 @@ function Library.addSection(container, title)
 local section = Instance.new("Frame")
 section.Size = UDim2.new(1, 0, 0, 45)
 section.BackgroundTransparency = 0.1
-section.BackgroundColor3 = Color3.fromRGB(0, 140, 0)
+section.BackgroundColor3 = FrameContenedor
 section.Parent = container
 
     local sectionLabel = Instance.new("TextLabel")
@@ -1041,7 +1055,7 @@ end
 function Library.addLabel(container, text)
     local labelFrame = Instance.new("Frame")
     labelFrame.Size = UDim2.new(1, 0, 0, 40)
-    labelFrame.BackgroundColor3 = Color3.fromRGB(0, 140, 0)
+    labelFrame.BackgroundColor3 = FrameContenedor
     labelFrame.BackgroundTransparency = 0.8
     labelFrame.Parent = container
 
@@ -1058,6 +1072,58 @@ function Library.addLabel(container, text)
     local corner = Instance.new("UICorner")
     corner.CornerRadius = UDim.new(0, 8)
     corner.Parent = labelFrame
+end
+
+function Library.AddKeybind(container, text, defaultKey, callback)
+	local KeybindFrame = Instance.new("Frame")
+KeybindFrame.Name = "KeybindFrame"
+KeybindFrame.Parent = container
+KeybindFrame.Position = UDim2.new(0, 10, 0, 0)
+KeybindFrame.BackgroundColor3 = FrameContenedor
+KeybindFrame.Size = UDim2.new(1, 0, 0, 40)
+KeybindFrame.BackgroundTransparency = 0.5
+addCorner(KeybindFrame, 5)
+
+	local KeybindTitle = Instance.new("TextLabel")
+	KeybindTitle.Name = "KeybindTitle"
+	KeybindTitle.Parent = KeybindFrame
+	KeybindTitle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	KeybindTitle.BackgroundTransparency = 1
+	KeybindTitle.Position = UDim2.new(0, 15, 0, 0)
+	KeybindTitle.Size = UDim2.new(0, 300, 0, 45)
+	KeybindTitle.Font = Enum.Font.Gotham
+	KeybindTitle.Text = text
+	KeybindTitle.TextColor3 = Color3.fromRGB(225, 225, 225)
+	KeybindTitle.TextSize = 15
+	KeybindTitle.TextXAlignment = Enum.TextXAlignment.Left
+
+	local KeybindButton = Instance.new("TextButton")
+	KeybindButton.Name = "KeybindButton"
+	KeybindButton.Parent = KeybindFrame
+	KeybindButton.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
+	KeybindButton.Position = UDim2.new(0, 310, 0, 5)
+	KeybindButton.Size = UDim2.new(0, 140, 0, 30)
+	KeybindButton.Font = Enum.Font.Gotham
+	KeybindButton.Text = defaultKey
+	KeybindButton.TextColor3 = Color3.fromRGB(225, 225, 225)
+	KeybindButton.TextSize = 15
+	addCorner(KeybindButton, 5)
+
+	local listening = false
+
+	KeybindButton.MouseButton1Click:Connect(function()
+		listening = true
+		KeybindButton.Text = "Press a key..."
+	end)
+
+	game:GetService("UserInputService").InputBegan:Connect(function(input, gameProcessed)
+		if listening and not gameProcessed then
+			local key = input.KeyCode.Name
+			KeybindButton.Text = key
+			callback(key)
+			listening = false
+		end
+	end)
 end
 
 return Library
