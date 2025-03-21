@@ -2,7 +2,7 @@ local Library = {}
 
 local gui = Instance.new("ScreenGui")
 gui.Parent = game:GetService("CoreGui")
-print("jajaj")
+print("xd")
 local existingGui = game:GetService("CoreGui"):FindFirstChild("xdd")
 if existingGui then existingGui:Destroy() end
 
@@ -14,6 +14,7 @@ end
 
 local TweenService = game:GetService("TweenService")
 
+local TransparenciaContenedor = 0.5
 local FrameContenedor = Color3.fromRGB(0, 140, 0)
 local bordes = Color3.fromRGB(0, 140, 0)
 
@@ -29,7 +30,7 @@ MainFrame.BorderSizePixel = 0
 MainFrame.Parent = ScreenGui
 MainFrame.Active = true
 MainFrame.Draggable = true
-MainFrame.BackgroundTransparency = 0.5
+MainFrame.BackgroundTransparency = TransparenciaContenedor
 addCorner(MainFrame, 7)
 
 local gradient = Instance.new("UIGradient")
@@ -302,7 +303,7 @@ tabButton.Font = Enum.Font.Gotham
 tabButton.TextSize = 15
 tabButton.BackgroundColor3 = Color3.fromRGB(0, 120, 0)
 tabButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-tabButton.BackgroundTransparency = 0.5
+tabButton.BackgroundTransparency = TransparenciaContenedor
 tabButton.Parent = TabsContainer
 
 local borderFrame = Instance.new("Frame")
@@ -361,7 +362,7 @@ addCorner(tabButton, 5)
         local tweenInfoTransparency = TweenInfo.new(0.5, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut, 0, false)
 
         local goalMove = {Position = UDim2.new(-1, 0, 0, 0)}
-        local goalTransparency = {BackgroundTransparency = 0.5}
+        local goalTransparency = {BackgroundTransparency = TransparenciaContenedor}
 
         local tweenMove = game:GetService("TweenService"):Create(brillo, tweenInfoMove, goalMove)
         local tweenTransparency = game:GetService("TweenService"):Create(brillo, tweenInfoTransparency, goalTransparency)
@@ -403,7 +404,7 @@ function Library.addButton(container, buttonText, descriptionText, callback)
     button.Size = UDim2.new(1, 0, 0, 40)
     button.Text = buttonText
     button.TextSize = 12
-    button.BackgroundTransparency = 0.5
+    button.BackgroundTransparency = TransparenciaContenedor
     button.Font = Enum.Font.Gotham
     button.BackgroundColor3 = FrameContenedor
     button.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -442,7 +443,7 @@ local ColorPicker = Instance.new("Frame")
 ColorPicker.Size = UDim2.new(1, 0, 0, 40)
 ColorPicker.BackgroundColor3 = FrameContenedor
 ColorPicker.Parent = container
-ColorPicker.BackgroundTransparency = 0.5
+ColorPicker.BackgroundTransparency = TransparenciaContenedor
 
     local borderFrame = Instance.new("Frame")
 borderFrame.Size = UDim2.new(1, 0, 1, 0)
@@ -612,7 +613,7 @@ local toggleFrame = Instance.new("Frame")
 toggleFrame.Size = UDim2.new(1, 0, 0, 40)
 toggleFrame.BackgroundColor3 = FrameContenedor
 toggleFrame.Parent = container
-toggleFrame.BackgroundTransparency = 0.5
+toggleFrame.BackgroundTransparency = TransparenciaContenedor
 addCorner(toggleFrame, 5)
 
     local borderFrame = Instance.new("Frame")
@@ -691,7 +692,7 @@ local sliderFrame = Instance.new("Frame")
 sliderFrame.Size = UDim2.new(1, 0, 0, 40)
 sliderFrame.BackgroundColor3 = FrameContenedor
 sliderFrame.Parent = container
-sliderFrame.BackgroundTransparency = 0.5
+sliderFrame.BackgroundTransparency = TransparenciaContenedor
 
     local borderFrame = Instance.new("Frame")
 borderFrame.Size = UDim2.new(1, 0, 1, 0)
@@ -812,7 +813,7 @@ local TweenService = game:GetService("TweenService")
 function Library.addDropdown(container, labelText, buttonText, options, callback)  
     local Dropdown = Instance.new("Frame")
     Dropdown.Size = UDim2.new(1, 0, 0, 40)
-    Dropdown.BackgroundTransparency = 0.5
+    Dropdown.BackgroundTransparency = TransparenciaContenedor
     Dropdown.BackgroundColor3 = FrameContenedor
     Dropdown.Parent = container
     addCorner(Dropdown, 5)
@@ -954,7 +955,7 @@ end
 function Library.addTextbox(container, labelText, placeholderText, defaultText, callback)
 local textboxFrame = Instance.new("Frame")
 textboxFrame.Size = UDim2.new(1, 0, 0, 40)
-textboxFrame.BackgroundTransparency = 0.5
+textboxFrame.BackgroundTransparency = TransparenciaContenedor
 textboxFrame.Parent = container
 
     local borderFrame = Instance.new("Frame")
@@ -1076,13 +1077,13 @@ end
 
 function Library.AddKeybind(container, text, defaultKey, callback)
 	local KeybindFrame = Instance.new("Frame")
-KeybindFrame.Name = "KeybindFrame"
-KeybindFrame.Parent = container
-KeybindFrame.Position = UDim2.new(0, 10, 0, 0)
-KeybindFrame.BackgroundColor3 = FrameContenedor
-KeybindFrame.Size = UDim2.new(1, 0, 0, 40)
-KeybindFrame.BackgroundTransparency = 0.5
-addCorner(KeybindFrame, 5)
+	KeybindFrame.Name = "KeybindFrame"
+	KeybindFrame.Parent = container
+	KeybindFrame.Position = UDim2.new(0, 10, 0, 0)
+	KeybindFrame.BackgroundColor3 = FrameContenedor
+	KeybindFrame.Size = UDim2.new(1, 0, 0, 40)
+	KeybindFrame.BackgroundTransparency = TransparenciaContenedor
+	addCorner(KeybindFrame, 5)
 
 	local KeybindTitle = Instance.new("TextLabel")
 	KeybindTitle.Name = "KeybindTitle"
@@ -1104,7 +1105,7 @@ addCorner(KeybindFrame, 5)
 	KeybindButton.Position = UDim2.new(0, 310, 0, 5)
 	KeybindButton.Size = UDim2.new(0, 140, 0, 30)
 	KeybindButton.Font = Enum.Font.Gotham
-	KeybindButton.Text = defaultKey
+	KeybindButton.Text = defaultKey.Name
 	KeybindButton.TextColor3 = Color3.fromRGB(225, 225, 225)
 	KeybindButton.TextSize = 15
 	addCorner(KeybindButton, 5)
