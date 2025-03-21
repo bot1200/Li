@@ -1101,7 +1101,7 @@ function Library.AddKeybind(container, text, defaultKey, callback)
 	local KeybindButton = Instance.new("TextButton")
 	KeybindButton.Name = "KeybindButton"
 	KeybindButton.Parent = KeybindFrame
-	KeybindButton.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
+	KeybindButton.BackgroundColor3 = Color3.fromRGB(0, 160, 0)
 	KeybindButton.Position = UDim2.new(0, 310, 0, 5)
 	KeybindButton.Size = UDim2.new(0, 140, 0, 30)
 	KeybindButton.Font = Enum.Font.Gotham
