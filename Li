@@ -2,7 +2,7 @@ local Library = {}
 
 local gui = Instance.new("ScreenGui")
 gui.Parent = game:GetService("CoreGui")
-print("xd")
+print("lol")
 local existingGui = game:GetService("CoreGui"):FindFirstChild("xdd")
 if existingGui then existingGui:Destroy() end
 
@@ -1095,7 +1095,7 @@ function Library.AddKeybind(container, text, defaultKey, callback)
 	KeybindTitle.Font = Enum.Font.Gotham
 	KeybindTitle.Text = text
 	KeybindTitle.TextColor3 = Color3.fromRGB(225, 225, 225)
-	KeybindTitle.TextSize = 15
+	KeybindTitle.TextSize = 13
 	KeybindTitle.TextXAlignment = Enum.TextXAlignment.Left
 
 	local KeybindButton = Instance.new("TextButton")
@@ -1106,8 +1106,9 @@ function Library.AddKeybind(container, text, defaultKey, callback)
 	KeybindButton.Size = UDim2.new(0, 140, 0, 30)
 	KeybindButton.Font = Enum.Font.Gotham
 	KeybindButton.Text = defaultKey.Name
+	KeybindButton.BackgroundTransparency = 0.3
 	KeybindButton.TextColor3 = Color3.fromRGB(225, 225, 225)
-	KeybindButton.TextSize = 15
+	KeybindButton.TextSize = 13
 	addCorner(KeybindButton, 5)
 
 	local listening = false
