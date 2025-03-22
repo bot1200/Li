@@ -2,7 +2,7 @@ local Library = {}
 
 local gui = Instance.new("ScreenGui")
 gui.Parent = game:GetService("CoreGui")
-print("lol")
+print("$$$")
 local existingGui = game:GetService("CoreGui"):FindFirstChild("xdd")
 if existingGui then existingGui:Destroy() end
 
@@ -14,6 +14,7 @@ end
 
 local TweenService = game:GetService("TweenService")
 
+local TamanoContenedor = UDim2.new(1, 0, 0, 45)
 local TransparenciaContenedor = 0.5
 local FrameContenedor = Color3.fromRGB(0, 140, 0)
 local bordes = Color3.fromRGB(0, 140, 0)
@@ -409,7 +410,7 @@ end
 
 function Library.addButton(container, buttonText, descriptionText, callback)
     local button = Instance.new("TextButton")
-    button.Size = UDim2.new(1, 0, 0, 40)
+    button.Size = TamanoContenedor
     button.Text = buttonText
     button.TextSize = 12
     button.BackgroundTransparency = TransparenciaContenedor
@@ -458,7 +459,7 @@ end
 
 function Library.AddColorPicker(container, labelText, defaultColor, callback)
 local ColorPicker = Instance.new("Frame")
-ColorPicker.Size = UDim2.new(1, 0, 0, 40)
+ColorPicker.Size = TamanoContenedor
 ColorPicker.BackgroundColor3 = FrameContenedor
 ColorPicker.Parent = container
 ColorPicker.BackgroundTransparency = TransparenciaContenedor
@@ -638,7 +639,7 @@ end
 end
 function Library.addToggle(container, labelText, descriptionText, defaultState, callback)
 local toggleFrame = Instance.new("Frame")
-toggleFrame.Size = UDim2.new(1, 0, 0, 40)
+toggleFrame.Size = TamanoContenedor
 toggleFrame.BackgroundColor3 = FrameContenedor
 toggleFrame.Parent = container
 toggleFrame.BackgroundTransparency = TransparenciaContenedor
@@ -727,7 +728,7 @@ end
 
 function Library.addSlider(container, name, minValue, maxValue, defaultValue, increment, callback)
 local sliderFrame = Instance.new("Frame")
-sliderFrame.Size = UDim2.new(1, 0, 0, 40)
+sliderFrame.Size = TamanoContenedor
 sliderFrame.BackgroundColor3 = FrameContenedor
 sliderFrame.Parent = container
 sliderFrame.BackgroundTransparency = TransparenciaContenedor
@@ -850,7 +851,7 @@ local TweenService = game:GetService("TweenService")
 
 function Library.addDropdown(container, labelText, buttonText, options, callback)  
     local Dropdown = Instance.new("Frame")
-    Dropdown.Size = UDim2.new(1, 0, 0, 40)
+    Dropdown.Size = TamanoContenedor
     Dropdown.BackgroundTransparency = TransparenciaContenedor
     Dropdown.BackgroundColor3 = FrameContenedor
     Dropdown.Parent = container
@@ -992,7 +993,7 @@ end
 
 function Library.addTextbox(container, labelText, placeholderText, defaultText, callback)
 local textboxFrame = Instance.new("Frame")
-textboxFrame.Size = UDim2.new(1, 0, 0, 40)
+textboxFrame.Size = TamanoContenedor
 textboxFrame.BackgroundTransparency = TransparenciaContenedor
 textboxFrame.Parent = container
 
@@ -1054,7 +1055,7 @@ end
 
 function Library.addParagraph(container, text)
     local paragraphFrame = Instance.new("Frame")
-    paragraphFrame.Size = UDim2.new(1, 0, 0, 40)
+    paragraphFrame.Size = TamanoContenedor
     paragraphFrame.BackgroundTransparency = 1
     paragraphFrame.Parent = container
 
@@ -1093,7 +1094,7 @@ end
 
 function Library.addLabel(container, text)
     local labelFrame = Instance.new("Frame")
-    labelFrame.Size = UDim2.new(1, 0, 0, 40)
+    labelFrame.Size = TamanoContenedor
     labelFrame.BackgroundColor3 = FrameContenedor
     labelFrame.BackgroundTransparency = 0.8
     labelFrame.Parent = container
@@ -1119,7 +1120,7 @@ function Library.AddKeybind(container, text, defaultKey, callback)
 	KeybindFrame.Parent = container
 	KeybindFrame.Position = UDim2.new(0, 10, 0, 0)
 	KeybindFrame.BackgroundColor3 = FrameContenedor
-	KeybindFrame.Size = UDim2.new(1, 0, 0, 40)
+	KeybindFrame.Size = TamanoContenedor
 	KeybindFrame.BackgroundTransparency = TransparenciaContenedor
 	addCorner(KeybindFrame, 5)
 
@@ -1144,7 +1145,7 @@ borderStroke.Parent = borderFrame
 	KeybindTitle.Size = UDim2.new(0, 300, 0, 45)
 	KeybindTitle.Font = Enum.Font.Gotham
 	KeybindTitle.Text = text
-	KeybindTitle.TextColor3 = Color3.fromRGB(225, 225, 225)
+	KeybindTitle.TextColor3 = Color3.fromRGB(255, 255, 255)
 	KeybindTitle.TextSize = 13
 	KeybindTitle.TextXAlignment = Enum.TextXAlignment.Left
 
