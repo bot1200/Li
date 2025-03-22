@@ -24,7 +24,7 @@ function Library:CreateUI(title, description)
 
 local MainFrame = Instance.new("Frame")
 MainFrame.Size = UDim2.new(0, 670, 0, 360)
-MainFrame.Position = UDim2.new(0.5, -500, 1, 0)
+MainFrame.Position = UDim2.new(1, 0, 0.5, -30)
 MainFrame.BackgroundColor3 = Color3.fromRGB(0, 120, 0)
 MainFrame.BorderSizePixel = 0
 MainFrame.Parent = ScreenGui
@@ -33,19 +33,27 @@ MainFrame.Draggable = true
 MainFrame.BackgroundTransparency = TransparenciaContenedor
 addCorner(MainFrame, 7)
 
+local TweenService = game:GetService("TweenService")
+
+local tweenPositionInfo = TweenInfo.new(1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+local tweenPosition = TweenService:Create(MainFrame, tweenPositionInfo, {Position = UDim2.new(0.5, -30, 0.5, -30)})
+
+local tweenSizePositionInfo = TweenInfo.new(1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+local tweenSizePosition = TweenService:Create(MainFrame, tweenSizePositionInfo, {
+    Size = UDim2.new(0, 670, 0, 360),
+    Position = UDim2.new(0.5, -335, 0.5, -212)
+})
+
+tweenPosition:Play()
+tweenPosition.Completed:Connect(function()
+    tweenSizePosition:Play()
+    print("tween ui")
+end)
+
 local gradient = Instance.new("UIGradient")
     gradient.Parent = MainFrame
     gradient.Color = ColorSequence.new(Color3.fromRGB(0, 255, 100), Color3.fromRGB(0, 140, 0))
     gradient.Rotation = 50
-
-local tweenInfo = TweenInfo.new(1, Enum.EasingStyle.Quart, Enum.EasingDirection.Out)
-local goal = {Position = UDim2.new(0.5, -350, 0.5, -200)}
-local tween = TweenService:Create(MainFrame, tweenInfo, goal)
-
-tween:Play()
-tween.Completed:Connect(function()
-    print("UI loaded")
-end)
 
 local backgroundOverlay = Instance.new("Frame")
 backgroundOverlay.Size = UDim2.new(1, 0, 1, 0)
