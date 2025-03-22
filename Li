@@ -281,7 +281,7 @@ local TweenService = game:GetService("TweenService")
 
 local isMinimized = false
 local normalSize = MainFrame.Size
-local minimizedSize = UDim2.new(normalSize.X.Scale, normalSize.X.Offset, 0, 30)
+local minimizedSize = UDim2.new(0, 670, 0, 360)
 
 local tweenInfo = TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
 
