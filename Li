@@ -2,7 +2,7 @@ local Library = {}
 
 local gui = Instance.new("ScreenGui")
 gui.Parent = game:GetService("CoreGui")
-print("fuck2")
+print("fk2")
 local existingGui = game:GetService("CoreGui"):FindFirstChild("xdd")
 if existingGui then existingGui:Destroy() end
 
@@ -232,17 +232,6 @@ RedLine.Parent = TopBar
     DescriptionLabel.TextXAlignment = Enum.TextXAlignment.Left
     DescriptionLabel.Parent = TopBar
     
-    local MinimizeButton = Instance.new("TextButton")
-    MinimizeButton.Size = UDim2.new(0, 20, 1, 0)
-    MinimizeButton.Position = UDim2.new(1, -50, 0, 0)
-    MinimizeButton.BackgroundTransparency = 1
-    MinimizeButton.Text = "-"
-    MinimizeButton.ZIndex = 11
-    MinimizeButton.TextSize = 16
-    MinimizeButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-    MinimizeButton.Font = Enum.Font.SourceSans
-    MinimizeButton.Parent = TopBar
-    
 local TabsContainer = Instance.new("ScrollingFrame")
 TabsContainer.Size = UDim2.new(0.3, 0, 1, -30)
 TabsContainer.Position = UDim2.new(0, 0, 0, 30)
@@ -276,32 +265,6 @@ addCorner(Container, 5)
     ContainerListLayout.SortOrder = Enum.SortOrder.LayoutOrder  
     ContainerListLayout.Padding = UDim.new(0, 5)  
     ContainerListLayout.Parent = Container  
-
-local isMinimized = false
-local normalSize = MainFrame.Size
-local minimizedSize = UDim2.new(0, 670, 0, 360)
-
-local MinimizeButton = MainFrame:WaitForChild("MinimizeButton", 5)
-
-if not MinimizeButton then
-    warn("MinimizeButton no encontrado")
-    return
-end
-
-MinimizeButton.MouseButton1Click:Connect(function()
-    isMinimized = not isMinimized
-    MainFrame.Size = isMinimized and minimizedSize or normalSize
-    MinimizeButton.Text = isMinimized and "+" or "-"
-end)
-
-MinimizeButton.MouseEnter:Connect(function()
-    MinimizeButton.BackgroundColor3 = Color3.fromRGB(255, 220, 50)
-end)
-
-MinimizeButton.MouseLeave:Connect(function()
-    MinimizeButton.BackgroundColor3 = Color3.fromRGB(255, 200, 0)
-end)
-
 
 local Tab = {TabsContainer = TabsContainer, Container = Container}
 
