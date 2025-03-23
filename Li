@@ -2,7 +2,7 @@ local Library = {}
 
 local gui = Instance.new("ScreenGui")
 gui.Parent = game:GetService("CoreGui")
-print("xddd")
+print("fuck")
 local existingGui = game:GetService("CoreGui"):FindFirstChild("xdd")
 if existingGui then existingGui:Destroy() end
 
@@ -303,43 +303,43 @@ end)
 MinimizeButton.MouseLeave:Connect(function()
     MinimizeButton.BackgroundColor3 = Color3.fromRGB(255, 200, 0)
 end)
-    
+
 local Tab = {TabsContainer = TabsContainer, Container = Container}
 
 function Tab:AddTab(tabName)
-    local tabButton = Instance.new("TextButton")
-    tabButton.Size = UDim2.new(1, -10, 0, 40)
-    tabButton.Text = tabName
-    tabButton.Font = Enum.Font.Gotham
-    tabButton.TextSize = 15
-    tabButton.BackgroundColor3 = Color3.fromRGB(0, 120, 0)
-    tabButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-    tabButton.BackgroundTransparency = TransparenciaContenedor
-    tabButton.Parent = TabsContainer
+local tabButton = Instance.new("TextButton")
+tabButton.Size = UDim2.new(1, -10, 0, 40)
+tabButton.Text = tabName
+tabButton.Font = Enum.Font.Gotham
+tabButton.TextSize = 15
+tabButton.BackgroundColor3 = Color3.fromRGB(0, 120, 0)
+tabButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+tabButton.BackgroundTransparency = TransparenciaContenedor
+tabButton.Parent = TabsContainer
 
-    local borderFrame = Instance.new("Frame")
-    borderFrame.Size = UDim2.new(1, 0, 1, 0)
-    borderFrame.Position = UDim2.new(0, -2, 0, 0)
-    borderFrame.BackgroundTransparency = 1
-    borderFrame.ZIndex = tabButton.ZIndex - 1
-    borderFrame.Parent = tabButton
+local borderFrame = Instance.new("Frame")
+borderFrame.Size = UDim2.new(1, 0, 1, 0)
+borderFrame.Position = UDim2.new(0, -2, 0, 0)
+borderFrame.BackgroundTransparency = 1
+borderFrame.ZIndex = tabButton.ZIndex - 1
+borderFrame.Parent = tabButton
 
-    local borderStroke = Instance.new("UIStroke")
-    borderStroke.Thickness = 2
-    borderStroke.Color = Color3.fromRGB(255, 255, 255)
-    borderStroke.Parent = borderFrame
+local borderStroke = Instance.new("UIStroke")
+borderStroke.Thickness = 2
+borderStroke.Color = Color3.fromRGB(255, 255, 255)
+borderStroke.Parent = borderFrame
 
-    addCorner(tabButton, 5)
-
+addCorner(tabButton, 5)
+    
     local tabFrame = Instance.new("Frame")
     tabFrame.Size = UDim2.new(1, 0, 1, -15)
     tabFrame.Position = UDim2.new(0, 0, 0, 80)
     tabFrame.BackgroundColor3 = Color3.fromRGB(0, 140, 0)
     tabFrame.BackgroundTransparency = 1
-    tabFrame.Visible = false -- Ocultar el frame al inicio
+    tabFrame.Visible = true
     tabFrame.Parent = Container
     addCorner(tabFrame, 5)
-
+    
     local frameScroll = Instance.new("ScrollingFrame")
     frameScroll.Size = UDim2.new(1, -10, 1, 2)
     frameScroll.Position = UDim2.new(0, 5, 0, 5)
@@ -359,7 +359,7 @@ function Tab:AddTab(tabName)
     buttonLayout:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(function()
         frameScroll.CanvasSize = UDim2.new(0, 0, 0, buttonLayout.AbsoluteContentSize.Y)
     end)
-
+    
     local function animarBrillo()
         local brillo = Instance.new("Frame")
         brillo.Size = UDim2.new(1, 0, 1, 0)
@@ -367,7 +367,7 @@ function Tab:AddTab(tabName)
         brillo.BackgroundColor3 = Color3.fromRGB(169, 169, 169)
         brillo.BackgroundTransparency = 0
         brillo.Parent = tabButton
-        addCorner(brillo, 5)
+        addCorner(brillo, 5) 
 
         local tweenInfoMove = TweenInfo.new(1, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut, 0, false)
         local tweenInfoTransparency = TweenInfo.new(0.5, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut, 0, false)
@@ -385,35 +385,30 @@ function Tab:AddTab(tabName)
             brillo:Destroy()
         end)
     end
-
+    
     tabButton.MouseButton1Click:Connect(function()
         animarBrillo()
-
-        -- Restablecer todos los botones a su color original
-        for _, button in ipairs(TabsContainer:GetChildren()) do
+        
+        for _, button in pairs(TabsContainer:GetChildren()) do
             if button:IsA("TextButton") then
                 button.BackgroundColor3 = Color3.fromRGB(0, 120, 0)
             end
         end
-
-        -- Cambiar el color del botón seleccionado
         tabButton.BackgroundColor3 = Color3.fromRGB(0, 100, 0)
-
-        -- Ocultar todos los frames
-        for _, frame in ipairs(Container:GetChildren()) do
+        
+        for _, frame in pairs(Container:GetChildren()) do
             if frame:IsA("Frame") then
                 frame.Visible = false
             end
         end
-
-        -- Mostrar el frame correspondiente al tab seleccionado
         tabFrame.Visible = true
     end)
-
+    
     return frameScroll
 end
 
-return Tab
+    return Tab
+end
 
 function Library.addButton(container, buttonText, descriptionText, callback)
     local button = Instance.new("TextButton")
