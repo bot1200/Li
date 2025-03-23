@@ -305,7 +305,6 @@ MinimizeButton.MouseLeave:Connect(function()
 end)
     
 local Tab = {TabsContainer = TabsContainer, Container = Container}
-local firstTab = true -- Detectar el primer Tab
 
 function Tab:AddTab(tabName)
     local tabButton = Instance.new("TextButton")
@@ -339,15 +338,6 @@ function Tab:AddTab(tabName)
     tabFrame.BackgroundTransparency = 1
     tabFrame.Parent = Container
     addCorner(tabFrame, 5)
-
-    -- Si es el primer tab, es visible por defecto
-    if firstTab then
-        tabFrame.Visible = true
-        tabButton.BackgroundColor3 = Color3.fromRGB(0, 100, 0) -- Resaltar el primer Tab
-        firstTab = false
-    else
-        tabFrame.Visible = false
-    end
 
     local frameScroll = Instance.new("ScrollingFrame")
     frameScroll.Size = UDim2.new(1, -10, 1, 2)
@@ -414,6 +404,14 @@ function Tab:AddTab(tabName)
         end
         tabFrame.Visible = true
     end)
+
+    -- Si es el primer Tab, activarlo automáticamente
+    if #Container:GetChildren() == 1 then
+        tabButton.BackgroundColor3 = Color3.fromRGB(0, 100, 0)
+        tabFrame.Visible = true
+    else
+        tabFrame.Visible = false
+    end
 
     return frameScroll
 end
