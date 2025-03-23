@@ -336,6 +336,7 @@ function Tab:AddTab(tabName)
     tabFrame.Position = UDim2.new(0, 0, 0, 80)
     tabFrame.BackgroundColor3 = Color3.fromRGB(0, 140, 0)
     tabFrame.BackgroundTransparency = 1
+    tabFrame.Visible = false -- Ocultar el frame al inicio
     tabFrame.Parent = Container
     addCorner(tabFrame, 5)
 
@@ -388,30 +389,26 @@ function Tab:AddTab(tabName)
     tabButton.MouseButton1Click:Connect(function()
         animarBrillo()
 
-        -- Restaurar el color de todos los Tabs antes de cambiar el seleccionado
-        for _, button in pairs(TabsContainer:GetChildren()) do
+        -- Restablecer todos los botones a su color original
+        for _, button in ipairs(TabsContainer:GetChildren()) do
             if button:IsA("TextButton") then
-                button.BackgroundColor3 = Color3.fromRGB(0, 120, 0) -- Restaurar color original
+                button.BackgroundColor3 = Color3.fromRGB(0, 120, 0)
             end
         end
-        tabButton.BackgroundColor3 = Color3.fromRGB(0, 100, 0) -- Resaltar Tab seleccionado
 
-        -- Ocultar todos los Frames antes de mostrar el seleccionado
-        for _, frame in pairs(Container:GetChildren()) do
+        -- Cambiar el color del botón seleccionado
+        tabButton.BackgroundColor3 = Color3.fromRGB(0, 100, 0)
+
+        -- Ocultar todos los frames
+        for _, frame in ipairs(Container:GetChildren()) do
             if frame:IsA("Frame") then
                 frame.Visible = false
             end
         end
+
+        -- Mostrar el frame correspondiente al tab seleccionado
         tabFrame.Visible = true
     end)
-
-    -- Si es el primer Tab, activarlo automáticamente
-    if #Container:GetChildren() == 1 then
-        tabButton.BackgroundColor3 = Color3.fromRGB(0, 100, 0)
-        tabFrame.Visible = true
-    else
-        tabFrame.Visible = false
-    end
 
     return frameScroll
 end
