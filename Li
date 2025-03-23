@@ -2,7 +2,7 @@ local Library = {}
 
 local gui = Instance.new("ScreenGui")
 gui.Parent = game:GetService("CoreGui")
-print("fuck")
+print("fuck2")
 local existingGui = game:GetService("CoreGui"):FindFirstChild("xdd")
 if existingGui then existingGui:Destroy() end
 
@@ -277,22 +277,20 @@ addCorner(Container, 5)
     ContainerListLayout.Padding = UDim.new(0, 5)  
     ContainerListLayout.Parent = Container  
 
-local TweenService = game:GetService("TweenService")
-local MinimizeButton = script.Parent.MinimizeButton  -- Asegúrate de que el botón esté correctamente referenciado
-local MainFrame = script.Parent.MainFrame  -- Asegúrate de que el marco principal esté correctamente referenciado
-
 local isMinimized = false
 local normalSize = MainFrame.Size
 local minimizedSize = UDim2.new(0, 670, 0, 360)
 
-local tweenInfo = TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+local MinimizeButton = MainFrame:WaitForChild("MinimizeButton", 5)
+
+if not MinimizeButton then
+    warn("MinimizeButton no encontrado")
+    return
+end
 
 MinimizeButton.MouseButton1Click:Connect(function()
     isMinimized = not isMinimized
-
-    local targetSize = isMinimized and minimizedSize or normalSize
-    TweenService:Create(MainFrame, tweenInfo, { Size = targetSize }):Play()
-
+    MainFrame.Size = isMinimized and minimizedSize or normalSize
     MinimizeButton.Text = isMinimized and "+" or "-"
 end)
 
@@ -303,6 +301,7 @@ end)
 MinimizeButton.MouseLeave:Connect(function()
     MinimizeButton.BackgroundColor3 = Color3.fromRGB(255, 200, 0)
 end)
+
 
 local Tab = {TabsContainer = TabsContainer, Container = Container}
 
