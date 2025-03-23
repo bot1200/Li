@@ -2,7 +2,7 @@ local Library = {}
 
 local gui = Instance.new("ScreenGui")
 gui.Parent = game:GetService("CoreGui")
-print("fk2")
+print("xd")
 local existingGui = game:GetService("CoreGui"):FindFirstChild("xdd")
 if existingGui then existingGui:Destroy() end
 
@@ -25,30 +25,32 @@ function Library:CreateUI(title, description)
 
 local MainFrame = Instance.new("Frame")
 MainFrame.Size = UDim2.new(0, 30, 0, 30)
-MainFrame.Position = UDim2.new(1, 0, 0.5, -30)
+MainFrame.Position = UDim2.new(0.5, -30, 0.5, -30)
 MainFrame.BackgroundColor3 = Color3.fromRGB(0, 120, 0)
 MainFrame.BorderSizePixel = 0
 MainFrame.Parent = ScreenGui
 MainFrame.Active = true
 MainFrame.Draggable = true
-MainFrame.BackgroundTransparency = TransparenciaContenedor
+MainFrame.BackgroundTransparency = 1 -- Empieza completamente transparente
 addCorner(MainFrame, 7)
 
-local TweenService = game:GetService("TweenService")
+-- Función para hacer fade in
+local function fadeIn(frame, duration)
+    local step = 0.05
+    local increment = step / duration
+    for i = 0, 1, increment do
+        frame.BackgroundTransparency = 1 - i
+        task.wait(step)
+    end
+    frame.BackgroundTransparency = 0
+end
 
-local tweenPositionInfo = TweenInfo.new(1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
-local tweenPosition = TweenService:Create(MainFrame, tweenPositionInfo, {Position = UDim2.new(0.5, -30, 0.5, -30)})
-
-local tweenSizePositionInfo = TweenInfo.new(1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
-local tweenSizePosition = TweenService:Create(MainFrame, tweenSizePositionInfo, {
-    Size = UDim2.new(0, 670, 0, 360),
-    Position = UDim2.new(0.5, -335, 0.5, -212)
-})
-
-tweenPosition:Play()
-tweenPosition.Completed:Connect(function()
-    tweenSizePosition:Play()
-    print("tween ui")
+-- Inicia el efecto de fade in y luego ajusta el tamaño
+task.spawn(function()
+    fadeIn(MainFrame, 1) -- Duración de 1 segundo
+    MainFrame.Size = UDim2.new(0, 670, 0, 360)
+    MainFrame.Position = UDim2.new(0.5, -335, 0.5, -212)
+    print("fade in ui")
 end)
 
 local gradient = Instance.new("UIGradient")
