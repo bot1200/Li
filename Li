@@ -2,7 +2,7 @@ local Library = {}
 
 local gui = Instance.new("ScreenGui")
 gui.Parent = game:GetService("CoreGui")
-print("xd")
+print("lib")
 local existingGui = game:GetService("CoreGui"):FindFirstChild("xdd")
 if existingGui then existingGui:Destroy() end
 
@@ -15,7 +15,7 @@ end
 local TweenService = game:GetService("TweenService")
 
 local TamanoContenedor = UDim2.new(1, 0, 0, 45)
-local TransparenciaContenedor = 0.5
+local TransparenciaContenedor = 0.7
 local FrameContenedor = Color3.fromRGB(0, 140, 0)
 local bordes = Color3.fromRGB(0, 140, 0)
 
@@ -24,34 +24,15 @@ function Library:CreateUI(title, description)
     ScreenGui.Parent = gui
 
 local MainFrame = Instance.new("Frame")
-MainFrame.Size = UDim2.new(0, 30, 0, 30)
-MainFrame.Position = UDim2.new(0.5, -30, 0.5, -30)
+MainFrame.Size = UDim2.new(0, 670, 0, 360)
+MainFrame.Position = UDim2.new(0.5, -335, 0.5, -212)
 MainFrame.BackgroundColor3 = Color3.fromRGB(0, 120, 0)
 MainFrame.BorderSizePixel = 0
 MainFrame.Parent = ScreenGui
 MainFrame.Active = true
 MainFrame.Draggable = true
-MainFrame.BackgroundTransparency = 1 -- Empieza completamente transparente
+MainFrame.BackgroundTransparency = 0.8
 addCorner(MainFrame, 7)
-
--- Función para hacer fade in
-local function fadeIn(frame, duration)
-    local step = 0.05
-    local increment = step / duration
-    for i = 0, 1, increment do
-        frame.BackgroundTransparency = 1 - i
-        task.wait(step)
-    end
-    frame.BackgroundTransparency = 0
-end
-
--- Inicia el efecto de fade in y luego ajusta el tamaño
-task.spawn(function()
-    fadeIn(MainFrame, 1) -- Duración de 1 segundo
-    MainFrame.Size = UDim2.new(0, 670, 0, 360)
-    MainFrame.Position = UDim2.new(0.5, -335, 0.5, -212)
-    print("fade in ui")
-end)
 
 local gradient = Instance.new("UIGradient")
     gradient.Parent = MainFrame
@@ -262,11 +243,6 @@ Container.BorderSizePixel = 0
 Container.Parent = MainFrame  
 Container.BackgroundTransparency = 1
 addCorner(Container, 5)
-      
-    local ContainerListLayout = Instance.new("UIListLayout")  
-    ContainerListLayout.SortOrder = Enum.SortOrder.LayoutOrder  
-    ContainerListLayout.Padding = UDim.new(0, 5)  
-    ContainerListLayout.Parent = Container  
 
 local Tab = {TabsContainer = TabsContainer, Container = Container}
 
