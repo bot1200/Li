@@ -124,6 +124,10 @@ border.Thickness = 2
 border.Color = Color3.fromRGB(0, 255, 100)
 border.Transparency = 0.5
 
+local screenGui = Instance.new("ScreenGui")
+screenGui.Name = "xdd"
+screenGui.Parent = game:GetService("CoreGui")
+
 local button = Instance.new("TextButton")
 local UICorner = Instance.new("UICorner")
 local clickSound = Instance.new("Sound")
@@ -135,7 +139,7 @@ button.Text = ""
 button.Font = Enum.Font.Gotham
 button.TextSize = 14
 button.TextColor3 = Color3.fromRGB(255, 255, 255)
-button.BackgroundTransparency = 0.9
+button.BackgroundTransparency = 0.7
 button.Draggable = true
 button.BorderSizePixel = 0
 
@@ -156,7 +160,7 @@ local function toggleButton()
     clickSound:Play()
 
     button:TweenSize(UDim2.new(0, 70, 0, 65), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.2, true)
-    task.wait(0.2)
+     wait(0.2)
     button:TweenSize(UDim2.new(0, 50, 0, 50), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.2, true)
 
     button.BackgroundTransparency = 0.2
@@ -176,22 +180,13 @@ TopBar.ZIndex = 10
 TopBar.Parent = MainFrame
 addCorner(TopBar, 5)
 
-local shadow = Instance.new("ImageLabel")
-shadow.Size = UDim2.new(1, 30, 1, 30)
-shadow.Position = UDim2.new(0, -15, 0, -15)
-shadow.Image = "rbxassetid://1316045217"
-shadow.ImageTransparency = 0.5
-shadow.BackgroundTransparency = 1
-shadow.ZIndex = -1
-shadow.Parent = MainFrame
-    
-local RedLine = Instance.new("Frame")
-RedLine.Size = UDim2.new(1, 0, 0, 2)
-RedLine.Position = UDim2.new(0, 0, 0, 30)
-RedLine.BackgroundColor3 = Color3.fromRGB(0, 255, 100)
-RedLine.BorderSizePixel = 0
-RedLine.ZIndex = 12
-RedLine.Parent = TopBar
+local Line = Instance.new("Frame")
+Line.Size = UDim2.new(1, 0, 0, 2)
+Line.Position = UDim2.new(0, 0, 0, 30)
+Line.BackgroundColor3 = Color3.fromRGB(0, 255, 100)
+Line.BorderSizePixel = 0
+Line.ZIndex = 12
+Line.Parent = TopBar
 
     local TitleLabel = Instance.new("TextLabel")
     TitleLabel.Size = UDim2.new(0, 150, 1, 0)
