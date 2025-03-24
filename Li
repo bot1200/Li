@@ -2,7 +2,7 @@ local Library = {}
 
 local gui = Instance.new("ScreenGui")
 gui.Parent = game:GetService("CoreGui")
-print(".")
+print("fufifi")
 local existingGui = game:GetService("CoreGui"):FindFirstChild("xdd")
 if existingGui then existingGui:Destroy() end
 
@@ -270,6 +270,7 @@ local borderStroke = Instance.new("UIStroke")
 borderStroke.Thickness = 2
 borderStroke.Color = Color3.fromRGB(255, 255, 255)
 borderStroke.Parent = borderFrame
+addCorner(borderFrame, redondoContenedor)
 
 addCorner(tabButton, 10)
     
@@ -375,7 +376,7 @@ local borderStroke = Instance.new("UIStroke")
 borderStroke.Thickness = 2
 borderStroke.Color = Color3.fromRGB(255, 255, 255)
 borderStroke.Parent = borderFrame
-
+addCorner(borderFrame, redondoContenedor)
     local label = Instance.new("TextLabel")
     label.Size = UDim2.new(1, -10, 0, 20)
     label.Position = UDim2.new(0, 0, 0, button.TextBounds.Y + 8)
@@ -419,7 +420,7 @@ local borderStroke = Instance.new("UIStroke")
 borderStroke.Thickness = 2
 borderStroke.Color = Color3.fromRGB(255, 255, 255)
 borderStroke.Parent = borderFrame
-
+addCorner(borderFrame, redondoContenedor)
 addCorner(ColorPicker, redondoContenedor)
 
 local label = Instance.new("TextLabel")
@@ -600,7 +601,7 @@ local borderStroke = Instance.new("UIStroke")
 borderStroke.Thickness = 2
 borderStroke.Color = Color3.fromRGB(255, 255, 255)
 borderStroke.Parent = borderFrame
-
+addCorner(borderFrame, redondoContenedor)
 local toggleLabel = Instance.new("TextLabel")
 toggleLabel.Size = UDim2.new(1, -60, 1, 0)
 toggleLabel.Position = UDim2.new(0, 10, 0, 0)
@@ -688,7 +689,7 @@ local borderStroke = Instance.new("UIStroke")
 borderStroke.Thickness = 2
 borderStroke.Color = Color3.fromRGB(255, 255, 255)
 borderStroke.Parent = borderFrame
-
+addCorner(borderFrame, redondoContenedor)
 addCorner(sliderFrame, redondoContenedor)
 
 local sliderLabel = Instance.new("TextLabel")
@@ -812,7 +813,7 @@ local borderStroke = Instance.new("UIStroke")
 borderStroke.Thickness = 2
 borderStroke.Color = Color3.fromRGB(255, 255, 255)
 borderStroke.Parent = borderFrame
-
+addCorner(borderFrame, redondoContenedor)
     local label = Instance.new("TextLabel")
     label.Size = UDim2.new(0.3, 0, 1, 0)
     label.Position = UDim2.new(0, 10, 0, 0)
@@ -956,7 +957,7 @@ borderStroke.Parent = borderFrame
 if addCorner then
     addCorner(textboxFrame, redondoContenedor)
 end
-
+addCorner(borderFrame, redondoContenedor)
 local label = Instance.new("TextLabel")
 label.Size = UDim2.new(0, 100, 1, 0)
 label.Position = UDim2.new(0, 10, 0, 0)
@@ -1079,7 +1080,7 @@ local borderStroke = Instance.new("UIStroke")
 borderStroke.Thickness = 2
 borderStroke.Color = Color3.fromRGB(255, 255, 255)
 borderStroke.Parent = borderFrame
-
+addCorner(borderFrame, redondoContenedor)
 	local KeybindTitle = Instance.new("TextLabel")
 	KeybindTitle.Name = "KeybindTitle"
 	KeybindTitle.Parent = KeybindFrame
