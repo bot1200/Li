@@ -2,7 +2,7 @@ local Library = {}
 
 local gui = Instance.new("ScreenGui")
 gui.Parent = game:GetService("CoreGui")
-print(".")
+print("xd")
 local existingGui = game:GetService("CoreGui"):FindFirstChild("xdd")
 if existingGui then existingGui:Destroy() end
 
@@ -273,7 +273,7 @@ addCorner(tabButton, 5)
     
     local tabFrame = Instance.new("Frame")
     tabFrame.Size = UDim2.new(1, 0, 1, -15)
-    tabFrame.Position = UDim2.new(0, 0, 0, 30)
+    tabFrame.Position = UDim2.new(0, 0, 0, 10)
     tabFrame.BackgroundColor3 = Color3.fromRGB(0, 140, 0)
     tabFrame.BackgroundTransparency = 1
     tabFrame.Visible = true
