@@ -675,7 +675,7 @@ sliderFrame.BackgroundColor3 = FrameContenedor
 sliderFrame.Parent = container
 sliderFrame.BackgroundTransparency = TransparenciaContenedor
 
-    local borderFrame = Instance.new("Frame")
+local borderFrame = Instance.new("Frame")
 borderFrame.Size = UDim2.new(1, 0, 1, 0)
 borderFrame.Position = UDim2.new(0, -2, 0, 0)
 borderFrame.BackgroundTransparency = 1
@@ -700,20 +700,22 @@ sliderLabel.TextXAlignment = Enum.TextXAlignment.Left
 sliderLabel.BackgroundTransparency = 1
 sliderLabel.Parent = sliderFrame
 
-    local bordertextbox = Instance.new("Frame")
-bordertextbox.Size = UDim2.new(1, 0, 1, 0)
-bordertextbox.Position = UDim2.new(0, -2, 0, 0)
-bordertextbox.BackgroundTransparency = 1
-bordertextbox.ZIndex = sliderTextBox.ZIndex -1
-bordertextbox.Parent = sliderTextBox
+-- Se renombra a borderTextboxFrame y borderTextboxStroke para evitar conflicto con el TextBox
+local borderTextboxFrame = Instance.new("Frame")
+borderTextboxFrame.Size = UDim2.new(1, 0, 1, 0)
+borderTextboxFrame.Position = UDim2.new(0, -2, 0, 0)
+borderTextboxFrame.BackgroundTransparency = 1
+borderTextboxFrame.ZIndex = sliderTextBox.ZIndex -1
+borderTextboxFrame.Parent = sliderTextBox
 
-local bordertextbox = Instance.new("UIStroke")
-bordertextbox.Thickness = 2
-bordertextbox.Color = Color3.fromRGB(255, 255, 255)
-bordertextbox.Parent = bordertextbox
-addCorner(borderFrame, redondoContenedor)
+local borderTextboxStroke = Instance.new("UIStroke")
+borderTextboxStroke.Thickness = 2
+borderTextboxStroke.Color = Color3.fromRGB(255, 255, 255)
+borderTextboxStroke.Parent = borderTextboxFrame
+addCorner(borderTextboxFrame, redondoContenedor)
 addCorner(sliderFrame, redondoContenedor)
 
+-- Definición de sliderTextBox antes de su uso
 local sliderTextBox = Instance.new("TextBox")
 sliderTextBox.Size = UDim2.new(0, 60, 0, 20)
 sliderTextBox.Position = UDim2.new(1, -70, 0, 5)
@@ -727,10 +729,6 @@ sliderTextBox.BackgroundColor3 = Color3.fromRGB(0, 150, 0)
 sliderTextBox.ClearTextOnFocus = false
 sliderTextBox.Parent = sliderFrame
 addCorner(sliderTextBox, 6)
-
-sliderTrack.BackgroundTransparency = TransparenciaContenedordelElementos
-sliderFill.BackgroundTransparency = TransparenciaContenedordelElementos
-sliderThumb.BackgroundTransparency = 0 
 
 local sliderTrack = Instance.new("Frame")
 sliderTrack.Size = UDim2.new(1, -40, 0, 6)
