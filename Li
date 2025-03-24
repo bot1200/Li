@@ -2,7 +2,7 @@ local Library = {}
 
 local gui = Instance.new("ScreenGui")
 gui.Parent = game:GetService("CoreGui")
-print("fufifi")
+print("m")
 local existingGui = game:GetService("CoreGui"):FindFirstChild("xdd")
 if existingGui then existingGui:Destroy() end
 
@@ -705,7 +705,7 @@ local borderTextboxFrame = Instance.new("Frame")
 borderTextboxFrame.Size = UDim2.new(1, 0, 1, 0)
 borderTextboxFrame.Position = UDim2.new(0, -2, 0, 0)
 borderTextboxFrame.BackgroundTransparency = 1
-borderTextboxFrame.ZIndex = sliderTextBox.ZIndex -1
+borderTextboxFrame.ZIndex = sliderTextBox.ZIndex - 1
 borderTextboxFrame.Parent = sliderTextBox
 
 local borderTextboxStroke = Instance.new("UIStroke")
