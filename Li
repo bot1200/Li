@@ -13,7 +13,7 @@ local function addCorner(instance, radius)
 end
 
 local TweenService = game:GetService("TweenService")
-
+local redondoContenedor = 10
 local TamanoContenedor = UDim2.new(1, 0, 0, 45)
 local TransparenciaContenedor = 0.7
 local FrameContenedor = Color3.fromRGB(0, 140, 0)
@@ -271,7 +271,7 @@ borderStroke.Thickness = 2
 borderStroke.Color = Color3.fromRGB(255, 255, 255)
 borderStroke.Parent = borderFrame
 
-addCorner(tabButton, 5)
+addCorner(tabButton, 10)
     
     local tabFrame = Instance.new("Frame")
     tabFrame.Size = UDim2.new(1, 0, 1, -15)
@@ -362,7 +362,7 @@ function Library.addButton(container, buttonText, descriptionText, callback)
     button.BackgroundColor3 = FrameContenedor
     button.TextColor3 = Color3.fromRGB(255, 255, 255)
     button.Parent = container
-    addCorner(button, 5)
+    addCorner(button, redondoContenedor)
     
     local borderFrame = Instance.new("Frame")
 borderFrame.Size = UDim2.new(1, 0, 1, 0)
@@ -420,7 +420,7 @@ borderStroke.Thickness = 2
 borderStroke.Color = Color3.fromRGB(255, 255, 255)
 borderStroke.Parent = borderFrame
 
-addCorner(ColorPicker, 5)
+addCorner(ColorPicker, redondoContenedor)
 
 local label = Instance.new("TextLabel")
 label.Size = UDim2.new(0.3, 0, 1, 0)
@@ -587,7 +587,7 @@ toggleFrame.Size = TamanoContenedor
 toggleFrame.BackgroundColor3 = FrameContenedor
 toggleFrame.Parent = container
 toggleFrame.BackgroundTransparency = TransparenciaContenedor
-addCorner(toggleFrame, 5)
+addCorner(toggleFrame, redondoContenedor)
 
     local borderFrame = Instance.new("Frame")
 borderFrame.Size = UDim2.new(1, 0, 1, 0)
@@ -689,7 +689,7 @@ borderStroke.Thickness = 2
 borderStroke.Color = Color3.fromRGB(255, 255, 255)
 borderStroke.Parent = borderFrame
 
-addCorner(sliderFrame, 6)
+addCorner(sliderFrame, redondoContenedor)
 
 local sliderLabel = Instance.new("TextLabel")
 sliderLabel.Size = UDim2.new(1, -20, 0, 20)
@@ -799,7 +799,7 @@ function Library.addDropdown(container, labelText, buttonText, options, callback
     Dropdown.BackgroundTransparency = TransparenciaContenedor
     Dropdown.BackgroundColor3 = FrameContenedor
     Dropdown.Parent = container
-    addCorner(Dropdown, 5)
+    addCorner(Dropdown, redondoContenedor)
     
         local borderFrame = Instance.new("Frame")
 borderFrame.Size = UDim2.new(1, 0, 1, 0)
@@ -954,7 +954,7 @@ borderStroke.Color = Color3.fromRGB(255, 255, 255)
 borderStroke.Parent = borderFrame
 
 if addCorner then
-    addCorner(textboxFrame, 5)
+    addCorner(textboxFrame, redondoContenedor)
 end
 
 local label = Instance.new("TextLabel")
@@ -1066,7 +1066,7 @@ function Library.AddKeybind(container, text, defaultKey, callback)
 	KeybindFrame.BackgroundColor3 = FrameContenedor
 	KeybindFrame.Size = TamanoContenedor
 	KeybindFrame.BackgroundTransparency = TransparenciaContenedor
-	addCorner(KeybindFrame, 5)
+	addCorner(KeybindFrame, redondoContenedor)
 
     local borderFrame = Instance.new("Frame")
 borderFrame.Size = UDim2.new(1, 0, 1, 0)
