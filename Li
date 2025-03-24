@@ -14,6 +14,7 @@ end
 
 local TweenService = game:GetService("TweenService")
 local redondoContenedor = 10
+local TransparenciaContenedordelElementos = 0.5
 local TamanoContenedor = UDim2.new(1, 0, 0, 45)
 local TransparenciaContenedor = 0.7
 local FrameContenedor = Color3.fromRGB(0, 140, 0)
@@ -31,7 +32,7 @@ MainFrame.BorderSizePixel = 0
 MainFrame.Parent = ScreenGui
 MainFrame.Active = true
 MainFrame.Draggable = true
-MainFrame.BackgroundTransparency = 0.8
+MainFrame.BackgroundTransparency = 0.7
 addCorner(MainFrame, 7)
 
 local gradient = Instance.new("UIGradient")
@@ -55,6 +56,7 @@ confirmationFrame.BackgroundColor3 = Color3.fromRGB(0, 100, 0)
 confirmationFrame.BackgroundTransparency = 0.2
 confirmationFrame.Parent = backgroundOverlay
 confirmationFrame.ZIndex = 19
+addCorner(confirmationFrame, 7)
 
 local confirmationLabel = Instance.new("TextLabel")
 confirmationLabel.Text = "Are you sure you want to Destroy the GUI?"
@@ -103,7 +105,7 @@ CloseButton.MouseButton1Click:Connect(function()
 end)
 
 yesButton.MouseButton1Click:Connect(function()
-        screenGui:Destroy()
+    MainFrame:Destroy()
 end)
 
 noButton.MouseButton1Click:Connect(function()
@@ -821,11 +823,11 @@ addCorner(borderFrame, redondoContenedor)
     label.Parent = Dropdown
 
     local dropdownFrame = Instance.new("Frame")
-    dropdownFrame.Size = UDim2.new(0.5, 0, 1, 0)
-    dropdownFrame.Position = UDim2.new(0.59, 0, 0, 0)
+    dropdownFrame.Size = UDim2.new(0, 140, 0, 30)
+dropdownFrame.Position = UDim2.new(0, 310, 0, 5)
     dropdownFrame.BackgroundColor3 = Color3.fromRGB(0, 140, 0)
     dropdownFrame.Parent = Dropdown
-    dropdownFrame.BackgroundTransparency = 0.3
+    dropdownFrame.BackgroundTransparency = TransparenciaContenedordelElementos
     addCorner(dropdownFrame, 5)
 
     local dropdownButton = Instance.new("TextButton")
@@ -834,7 +836,7 @@ addCorner(borderFrame, redondoContenedor)
     dropdownButton.Position = UDim2.new(0, 0, 0, 0)
     dropdownButton.Font = Enum.Font.Gotham
     dropdownButton.TextSize = 13
-    dropdownButton.BackgroundTransparency = 0.3
+    dropdownButton.BackgroundTransparency = TransparenciaContenedordelElementos
     dropdownButton.TextColor3 = Color3.fromRGB(255, 255, 255)
     dropdownButton.BackgroundColor3 = Color3.fromRGB(0, 130, 0)
     dropdownButton.Parent = dropdownFrame
@@ -846,7 +848,7 @@ addCorner(borderFrame, redondoContenedor)
     dropdownList.Visible = false
     dropdownList.BackgroundColor3 = Color3.fromRGB(0, 130, 0)
     dropdownList.ClipsDescendants = true
-    dropdownList.BackgroundTransparency = 0.3
+    dropdownList.BackgroundTransparency = TransparenciaContenedordelElementos
     dropdownList.Parent = dropdownFrame
     addCorner(dropdownList, 5)
 
@@ -896,7 +898,7 @@ addCorner(borderFrame, redondoContenedor)
             optionButton.Text = option  
             optionButton.Font = Enum.Font.Gotham  
             optionButton.TextSize = 14  
-            optionButton.BackgroundTransparency = 0.3
+            optionButton.BackgroundTransparency = TransparenciaContenedordelElementos
             optionButton.ZIndex = 4  
             optionButton.TextColor3 = Color3.fromRGB(255, 255, 255)  
             optionButton.BackgroundColor3 = Color3.fromRGB(0, 100, 0)  
@@ -973,7 +975,7 @@ textBox.Font = Enum.Font.Gotham
 textBox.TextSize = 14
 textBox.ClearTextOnFocus = false
 textBox.TextWrapped = true
-textBox.BackgroundTransparency = 0.3
+textBox.BackgroundTransparency = TransparenciaContenedordelElementos
 textBox.TextColor3 = Color3.fromRGB(255, 255, 255)
 textBox.BackgroundColor3 = Color3.fromRGB(0, 180, 0)
 textBox.Parent = textboxFrame
@@ -1097,7 +1099,7 @@ addCorner(borderFrame, redondoContenedor)
 	KeybindButton.Size = UDim2.new(0, 140, 0, 30)
 	KeybindButton.Font = Enum.Font.Gotham
 	KeybindButton.Text = defaultKey.Name
-	KeybindButton.BackgroundTransparency = 0.3
+	KeybindButton.BackgroundTransparency = TransparenciaContenedordelElementos
 	KeybindButton.TextColor3 = Color3.fromRGB(225, 225, 225)
 	KeybindButton.TextSize = 13
 	addCorner(KeybindButton, 5)
