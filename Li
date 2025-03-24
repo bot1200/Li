@@ -2,7 +2,7 @@ local Library = {}
 
 local gui = Instance.new("ScreenGui")
 gui.Parent = game:GetService("CoreGui")
-print("fuck errors")
+print("fuck errors lol")
 local existingGui = game:GetService("CoreGui"):FindFirstChild("xdd")
 if existingGui then existingGui:Destroy() end
 
@@ -713,6 +713,9 @@ sliderTextBox.BackgroundColor3 = Color3.fromRGB(0, 150, 0)
 sliderTextBox.ClearTextOnFocus = false
 sliderTextBox.Parent = sliderFrame
 addCorner(sliderTextBox, 6)
+
+sliderTrack.BackgroundTransparency = TransparenciaContenedordelElementos
+sliderFill.BackgroundTransparency = TransparenciaContenedordelElementos
 
 local sliderTrack = Instance.new("Frame")
 sliderTrack.Size = UDim2.new(1, -40, 0, 6)
