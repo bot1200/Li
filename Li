@@ -124,10 +124,6 @@ border.Thickness = 2
 border.Color = Color3.fromRGB(0, 255, 100)
 border.Transparency = 0.5
 
-local screenGui = Instance.new("ScreenGui")
-screenGui.Name = "xdd"
-screenGui.Parent = game:GetService("CoreGui")
-
 local button = Instance.new("TextButton")
 local UICorner = Instance.new("UICorner")
 local clickSound = Instance.new("Sound")
@@ -139,7 +135,7 @@ button.Text = ""
 button.Font = Enum.Font.Gotham
 button.TextSize = 14
 button.TextColor3 = Color3.fromRGB(255, 255, 255)
-button.BackgroundTransparency = 0.3
+button.BackgroundTransparency = 0.9
 button.Draggable = true
 button.BorderSizePixel = 0
 
@@ -160,8 +156,12 @@ local function toggleButton()
     clickSound:Play()
 
     button:TweenSize(UDim2.new(0, 70, 0, 65), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.2, true)
-    wait(0.2)
+    task.wait(0.2)
     button:TweenSize(UDim2.new(0, 50, 0, 50), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.2, true)
+
+    button.BackgroundTransparency = 0.2
+    task.wait(3)
+    button.BackgroundTransparency = 0.9
 end
 
 button.MouseButton1Click:Connect(toggleButton)
@@ -263,7 +263,7 @@ local borderFrame = Instance.new("Frame")
 borderFrame.Size = UDim2.new(1, 0, 1, 0)
 borderFrame.Position = UDim2.new(0, -2, 0, 0)
 borderFrame.BackgroundTransparency = 1
-borderFrame.ZIndex = tabButton.ZIndex - 1
+borderFrame.ZIndex = tabButton.ZIndex -1
 borderFrame.Parent = tabButton
 
 local borderStroke = Instance.new("UIStroke")
@@ -369,7 +369,7 @@ function Library.addButton(container, buttonText, descriptionText, callback)
 borderFrame.Size = UDim2.new(1, 0, 1, 0)
 borderFrame.Position = UDim2.new(0, -2, 0, 0)
 borderFrame.BackgroundTransparency = 1
-borderFrame.ZIndex = button.ZIndex - 1
+borderFrame.ZIndex = button.ZIndex -1
 borderFrame.Parent = button
 
 local borderStroke = Instance.new("UIStroke")
@@ -413,7 +413,7 @@ ColorPicker.BackgroundTransparency = TransparenciaContenedor
 borderFrame.Size = UDim2.new(1, 0, 1, 0)
 borderFrame.Position = UDim2.new(0, -2, 0, 0)
 borderFrame.BackgroundTransparency = 1
-borderFrame.ZIndex = ColorPicker.ZIndex - 1
+borderFrame.ZIndex = ColorPicker.ZIndex -1
 borderFrame.Parent = ColorPicker
 
 local borderStroke = Instance.new("UIStroke")
@@ -594,7 +594,7 @@ addCorner(toggleFrame, redondoContenedor)
 borderFrame.Size = UDim2.new(1, 0, 1, 0)
 borderFrame.Position = UDim2.new(0, -2, 0, 0)
 borderFrame.BackgroundTransparency = 1
-borderFrame.ZIndex = toggleFrame.ZIndex - 1
+borderFrame.ZIndex = toggleFrame.ZIndex -1
 borderFrame.Parent = toggleFrame
 
 local borderStroke = Instance.new("UIStroke")
@@ -682,7 +682,7 @@ sliderFrame.BackgroundTransparency = TransparenciaContenedor
 borderFrame.Size = UDim2.new(1, 0, 1, 0)
 borderFrame.Position = UDim2.new(0, -2, 0, 0)
 borderFrame.BackgroundTransparency = 1
-borderFrame.ZIndex = sliderFrame.ZIndex - 1
+borderFrame.ZIndex = sliderFrame.ZIndex -1
 borderFrame.Parent = sliderFrame
 
 local borderStroke = Instance.new("UIStroke")
@@ -806,7 +806,7 @@ function Library.addDropdown(container, labelText, buttonText, options, callback
 borderFrame.Size = UDim2.new(1, 0, 1, 0)
 borderFrame.Position = UDim2.new(0, -2, 0, 0)
 borderFrame.BackgroundTransparency = 1
-borderFrame.ZIndex = Dropdown.ZIndex - 1
+borderFrame.ZIndex = Dropdown.ZIndex -1
 borderFrame.Parent = Dropdown
 
 local borderStroke = Instance.new("UIStroke")
@@ -946,7 +946,7 @@ textboxFrame.Parent = container
 borderFrame.Size = UDim2.new(1, 0, 1, 0)
 borderFrame.Position = UDim2.new(0, -2, 0, 0)
 borderFrame.BackgroundTransparency = 1
-borderFrame.ZIndex = textboxFrame.ZIndex - 1
+borderFrame.ZIndex = textboxFrame.ZIndex -1
 borderFrame.Parent = textboxFrame
 
 local borderStroke = Instance.new("UIStroke")
@@ -1073,7 +1073,7 @@ function Library.AddKeybind(container, text, defaultKey, callback)
 borderFrame.Size = UDim2.new(1, 0, 1, 0)
 borderFrame.Position = UDim2.new(0, -2, 0, 0)
 borderFrame.BackgroundTransparency = 1
-borderFrame.ZIndex = KeybindFrame.ZIndex - 1
+borderFrame.ZIndex = KeybindFrame.ZIndex -1
 borderFrame.Parent = KeybindFrame
 
 local borderStroke = Instance.new("UIStroke")
