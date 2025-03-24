@@ -2,7 +2,7 @@ local Library = {}
 
 local gui = Instance.new("ScreenGui")
 gui.Parent = game:GetService("CoreGui")
-print("m")
+print("fuck errors")
 local existingGui = game:GetService("CoreGui"):FindFirstChild("xdd")
 if existingGui then existingGui:Destroy() end
 
@@ -700,22 +700,6 @@ sliderLabel.TextXAlignment = Enum.TextXAlignment.Left
 sliderLabel.BackgroundTransparency = 1
 sliderLabel.Parent = sliderFrame
 
--- Se renombra a borderTextboxFrame y borderTextboxStroke para evitar conflicto con el TextBox
-local borderTextboxFrame = Instance.new("Frame")
-borderTextboxFrame.Size = UDim2.new(1, 0, 1, 0)
-borderTextboxFrame.Position = UDim2.new(0, -2, 0, 0)
-borderTextboxFrame.BackgroundTransparency = 1
-borderTextboxFrame.ZIndex = sliderTextBox.ZIndex - 1
-borderTextboxFrame.Parent = sliderTextBox
-
-local borderTextboxStroke = Instance.new("UIStroke")
-borderTextboxStroke.Thickness = 2
-borderTextboxStroke.Color = Color3.fromRGB(255, 255, 255)
-borderTextboxStroke.Parent = borderTextboxFrame
-addCorner(borderTextboxFrame, redondoContenedor)
-addCorner(sliderFrame, redondoContenedor)
-
--- Definición de sliderTextBox antes de su uso
 local sliderTextBox = Instance.new("TextBox")
 sliderTextBox.Size = UDim2.new(0, 60, 0, 20)
 sliderTextBox.Position = UDim2.new(1, -70, 0, 5)
@@ -849,7 +833,7 @@ dropdownFrame.Position = UDim2.new(0, 310, 0, 5)
 
     local dropdownButton = Instance.new("TextButton")
     dropdownButton.Text = buttonText
-    dropdownButton.Size = UDim2.new(0.8, 0, 1, 0)
+    dropdownButton.Size = UDim2.new(0, 140, 0, 30)
     dropdownButton.Position = UDim2.new(0, 0, 0, 0)
     dropdownButton.Font = Enum.Font.Gotham
     dropdownButton.TextSize = 13
