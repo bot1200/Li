@@ -36,8 +36,8 @@ addCorner(MainFrame, 7)
 
 local gradient = Instance.new("UIGradient")
     gradient.Parent = MainFrame
-    gradient.Color = ColorSequence.new(Color3.fromRGB(0, 255, 100), Color3.fromRGB(0, 140, 0))
-    gradient.Rotation = 50
+    gradient.Color = ColorSequence.new(Color3.fromRGB(0, 255, 100), Color3.fromRGB(0, 180, 0))
+    gradient.Rotation = 70
 
 local backgroundOverlay = Instance.new("Frame")
 backgroundOverlay.Size = UDim2.new(1, 0, 1, 0)
@@ -170,7 +170,9 @@ local TopBar = Instance.new("Frame")
 TopBar.Size = UDim2.new(1, 0, 0, 30)
 TopBar.BackgroundColor3 = Color3.fromRGB(0, 140, 0)
 TopBar.BorderSizePixel = 0
+TopBar.BackgroundTransparency = 0.5
 TopBar.ZIndex = 10
+
 TopBar.Parent = MainFrame
 addCorner(TopBar, 5)
 
