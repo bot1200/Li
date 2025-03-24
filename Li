@@ -166,7 +166,7 @@ local function toggleButton()
     button:TweenSize(UDim2.new(0, 50, 0, 50), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.2, true)
 
     button.BackgroundTransparency = 0.2
-    task.wait(3)
+    task.wait(2)
     button.BackgroundTransparency = 0.9
 end
 
@@ -700,18 +700,37 @@ sliderLabel.TextXAlignment = Enum.TextXAlignment.Left
 sliderLabel.BackgroundTransparency = 1
 sliderLabel.Parent = sliderFrame
 
+    local bordertextbox = Instance.new("Frame")
+bordertextbox.Size = UDim2.new(1, 0, 1, 0)
+bordertextbox.Position = UDim2.new(0, -2, 0, 0)
+bordertextbox.BackgroundTransparency = 1
+bordertextbox.ZIndex = sliderTextBox.ZIndex -1
+bordertextbox.Parent = sliderTextBox
+
+local bordertextbox = Instance.new("UIStroke")
+bordertextbox.Thickness = 2
+bordertextbox.Color = Color3.fromRGB(255, 255, 255)
+bordertextbox.Parent = bordertextbox
+addCorner(borderFrame, redondoContenedor)
+addCorner(sliderFrame, redondoContenedor)
+
 local sliderTextBox = Instance.new("TextBox")
 sliderTextBox.Size = UDim2.new(0, 60, 0, 20)
 sliderTextBox.Position = UDim2.new(1, -70, 0, 5)
 sliderTextBox.Text = tostring(defaultValue)
 sliderTextBox.Font = Enum.Font.Gotham
 sliderTextBox.TextSize = 18
+sliderTextBox.BackgroundTransparency = TransparenciaContenedordelElementos
 sliderTextBox.TextColor3 = Color3.fromRGB(255, 255, 255)
 sliderTextBox.TextXAlignment = Enum.TextXAlignment.Center
 sliderTextBox.BackgroundColor3 = Color3.fromRGB(0, 150, 0)
 sliderTextBox.ClearTextOnFocus = false
 sliderTextBox.Parent = sliderFrame
 addCorner(sliderTextBox, 6)
+
+sliderTrack.BackgroundTransparency = TransparenciaContenedordelElementos
+sliderFill.BackgroundTransparency = TransparenciaContenedordelElementos
+sliderThumb.BackgroundTransparency = 0 
 
 local sliderTrack = Instance.new("Frame")
 sliderTrack.Size = UDim2.new(1, -40, 0, 6)
@@ -827,7 +846,7 @@ addCorner(borderFrame, redondoContenedor)
 dropdownFrame.Position = UDim2.new(0, 310, 0, 5)
     dropdownFrame.BackgroundColor3 = Color3.fromRGB(0, 140, 0)
     dropdownFrame.Parent = Dropdown
-    dropdownFrame.BackgroundTransparency = TransparenciaContenedordelElementos
+    dropdownFrame.BackgroundTransparency = 1
     addCorner(dropdownFrame, 5)
 
     local dropdownButton = Instance.new("TextButton")
@@ -856,7 +875,7 @@ dropdownFrame.Position = UDim2.new(0, 310, 0, 5)
     scrollFrame.Size = UDim2.new(1, 0, 1, 0)
     scrollFrame.Position = UDim2.new(0, 0, 0, 0)
     scrollFrame.BackgroundTransparency = 1
-    scrollFrame.ScrollBarThickness = 2
+    scrollFrame.ScrollBarThickness = 0
     scrollFrame.CanvasSize = UDim2.new(0, 0, 0, 0)
     scrollFrame.Parent = dropdownList
 
