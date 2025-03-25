@@ -2,7 +2,7 @@ local Library = {}
 
 local gui = Instance.new("ScreenGui")
 gui.Parent = game:GetService("CoreGui")
-print("fuck errors")
+print("f")
 local existingGui = game:GetService("CoreGui"):FindFirstChild("xdd")
 if existingGui then existingGui:Destroy() end
 
@@ -244,39 +244,39 @@ Container.BackgroundTransparency = 1
 addCorner(Container, 5)
 
 local Tab = {TabsContainer = TabsContainer, Container = Container}
+Tab.Count = 0  -- Contador de tabs creados
 
 function Tab:AddTab(tabName)
-local tabButton = Instance.new("TextButton")
-tabButton.Size = UDim2.new(1, -10, 0, 40)
-tabButton.Text = tabName
-tabButton.Font = Enum.Font.Gotham
-tabButton.TextSize = 15
-tabButton.BackgroundColor3 = Color3.fromRGB(0, 120, 0)
-tabButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-tabButton.BackgroundTransparency = TransparenciaContenedor
-tabButton.Parent = TabsContainer
+    local tabButton = Instance.new("TextButton")
+    tabButton.Size = UDim2.new(1, -10, 0, 40)
+    tabButton.Text = tabName
+    tabButton.Font = Enum.Font.Gotham
+    tabButton.TextSize = 15
+    tabButton.BackgroundColor3 = Color3.fromRGB(0, 120, 0)
+    tabButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+    tabButton.BackgroundTransparency = TransparenciaContenedor
+    tabButton.Parent = TabsContainer
 
-local borderFrame = Instance.new("Frame")
-borderFrame.Size = UDim2.new(1, 0, 1, 0)
-borderFrame.Position = UDim2.new(0, -2, 0, 0)
-borderFrame.BackgroundTransparency = 1
-borderFrame.ZIndex = tabButton.ZIndex -1
-borderFrame.Parent = tabButton
+    local borderFrame = Instance.new("Frame")
+    borderFrame.Size = UDim2.new(1, 0, 1, 0)
+    borderFrame.Position = UDim2.new(0, -2, 0, 0)
+    borderFrame.BackgroundTransparency = 1
+    borderFrame.ZIndex = tabButton.ZIndex - 1
+    borderFrame.Parent = tabButton
 
-local borderStroke = Instance.new("UIStroke")
-borderStroke.Thickness = 2
-borderStroke.Color = Color3.fromRGB(255, 255, 255)
-borderStroke.Parent = borderFrame
-addCorner(borderFrame, redondoContenedor)
+    local borderStroke = Instance.new("UIStroke")
+    borderStroke.Thickness = 2
+    borderStroke.Color = Color3.fromRGB(255, 255, 255)
+    borderStroke.Parent = borderFrame
+    addCorner(borderFrame, redondoContenedor)
 
-addCorner(tabButton, 10)
+    addCorner(tabButton, 10)
     
     local tabFrame = Instance.new("Frame")
     tabFrame.Size = UDim2.new(1, 0, 1, -15)
     tabFrame.Position = UDim2.new(0, 0, 0, 1)
     tabFrame.BackgroundColor3 = Color3.fromRGB(0, 140, 0)
     tabFrame.BackgroundTransparency = 1
-    tabFrame.Visible = true
     tabFrame.Parent = Container
     addCorner(tabFrame, 5)
     
@@ -300,6 +300,7 @@ addCorner(tabButton, 10)
         frameScroll.CanvasSize = UDim2.new(0, 0, 0, buttonLayout.AbsoluteContentSize.Y)
     end)
     
+    -- Animación de brillo al hacer click en la pestaña
     local function animarBrillo()
         local brillo = Instance.new("Frame")
         brillo.Size = UDim2.new(1, 0, 1, 0)
@@ -344,11 +345,18 @@ addCorner(tabButton, 10)
         tabFrame.Visible = true
     end)
     
+    -- Incrementamos el contador y determinamos la visibilidad
+    Tab.Count = Tab.Count + 1
+    if Tab.Count > 1 then
+        tabFrame.Visible = false
+    else
+        tabFrame.Visible = true
+    end
+
     return frameScroll
 end
 
-    return Tab
-end
+return Tab
 
 function Library.addButton(container, buttonText, descriptionText, callback)
     local button = Instance.new("TextButton")
