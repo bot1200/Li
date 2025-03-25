@@ -29,7 +29,7 @@ function Library:CreateUI(title, description)
     ScreenGui.Parent = mainGui
 
     local MainFrame = Instance.new("Frame")
-    MainFrame.Size = UDim2.new(0, 670, 0, 360)
+    MainFrame.Size = UDim2.new(0, 650, 0, 340)
     MainFrame.Position = UDim2.new(0.5, -335, 0.5, -212)
     MainFrame.BackgroundColor3 = Color3.fromRGB(0, 120, 0)
     MainFrame.BorderSizePixel = 0
@@ -952,7 +952,7 @@ textboxFrame.BackgroundTransparency = TransparenciaContenedor
 textboxFrame.Parent = container
 
     local borderFrame = Instance.new("Frame")
-borderFrame.Size = UDim2.new(1, 0, 1, 0)
+borderFrame.Size = UDim2.new(0.5, 0, 1, 0)
 borderFrame.Position = UDim2.new(0, -2, 0, 0)
 borderFrame.BackgroundTransparency = 1
 borderFrame.ZIndex = textboxFrame.ZIndex -1
@@ -1079,7 +1079,7 @@ function Library.AddKeybind(container, text, defaultKey, callback)
 	addCorner(KeybindFrame, redondoContenedor)
 
     local borderFrame = Instance.new("Frame")
-borderFrame.Size = UDim2.new(1, 0, 1, 0)
+borderFrame.Size = UDim2.new(0.5, 0, 1, 0)
 borderFrame.Position = UDim2.new(0, -2, 0, 0)
 borderFrame.BackgroundTransparency = 1
 borderFrame.ZIndex = KeybindFrame.ZIndex -1
