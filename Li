@@ -244,7 +244,6 @@ Container.BackgroundTransparency = 1
 addCorner(Container, 5)
 
 local Tab = {TabsContainer = TabsContainer, Container = Container}
-Tab.Count = 0  -- Contador de tabs creados
 
 function Tab:AddTab(tabName)
     local tabButton = Instance.new("TextButton")
@@ -271,15 +270,22 @@ function Tab:AddTab(tabName)
     addCorner(borderFrame, redondoContenedor)
 
     addCorner(tabButton, 10)
-    
+
     local tabFrame = Instance.new("Frame")
     tabFrame.Size = UDim2.new(1, 0, 1, -15)
     tabFrame.Position = UDim2.new(0, 0, 0, 1)
     tabFrame.BackgroundColor3 = Color3.fromRGB(0, 140, 0)
     tabFrame.BackgroundTransparency = 1
+    -- Verificar si ya existen tabFrames en el contenedor
+    local cant = #Container:GetChildren()
+    if cant == 0 then
+        tabFrame.Visible = true  -- Primer tabFrame visible por defecto
+    else
+        tabFrame.Visible = false
+    end
     tabFrame.Parent = Container
     addCorner(tabFrame, 5)
-    
+
     local frameScroll = Instance.new("ScrollingFrame")
     frameScroll.Size = UDim2.new(1, -10, 1, 2)
     frameScroll.Position = UDim2.new(0, 5, 0, 5)
@@ -299,8 +305,7 @@ function Tab:AddTab(tabName)
     buttonLayout:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(function()
         frameScroll.CanvasSize = UDim2.new(0, 0, 0, buttonLayout.AbsoluteContentSize.Y)
     end)
-    
-    -- Animación de brillo al hacer click en la pestaña
+
     local function animarBrillo()
         local brillo = Instance.new("Frame")
         brillo.Size = UDim2.new(1, 0, 1, 0)
@@ -308,7 +313,7 @@ function Tab:AddTab(tabName)
         brillo.BackgroundColor3 = Color3.fromRGB(169, 169, 169)
         brillo.BackgroundTransparency = 0
         brillo.Parent = tabButton
-        addCorner(brillo, 5) 
+        addCorner(brillo, 5)
 
         local tweenInfoMove = TweenInfo.new(1, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut, 0, false)
         local tweenInfoTransparency = TweenInfo.new(0.5, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut, 0, false)
@@ -326,17 +331,17 @@ function Tab:AddTab(tabName)
             brillo:Destroy()
         end)
     end
-    
+
     tabButton.MouseButton1Click:Connect(function()
         animarBrillo()
-        
+
         for _, button in pairs(TabsContainer:GetChildren()) do
             if button:IsA("TextButton") then
                 button.BackgroundColor3 = Color3.fromRGB(0, 120, 0)
             end
         end
         tabButton.BackgroundColor3 = Color3.fromRGB(0, 100, 0)
-        
+
         for _, frame in pairs(Container:GetChildren()) do
             if frame:IsA("Frame") then
                 frame.Visible = false
@@ -344,14 +349,6 @@ function Tab:AddTab(tabName)
         end
         tabFrame.Visible = true
     end)
-    
-    -- Incrementamos el contador y determinamos la visibilidad
-    Tab.Count = Tab.Count + 1
-    if Tab.Count > 1 then
-        tabFrame.Visible = false
-    else
-        tabFrame.Visible = true
-    end
 
     return frameScroll
 end
