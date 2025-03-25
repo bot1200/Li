@@ -139,7 +139,7 @@ function Library:CreateUI(title, description)
     local clickSound = Instance.new("Sound")
 
     button.Name = "Button"
-    button.Size = UDim2.new(0, 50, 0, 50)
+    button.Size = UDim2.new(0, 30, 0, 30)
     button.Position = UDim2.new(0.12, 0, 0.1, 0)
     button.Text = ""
     button.Font = Enum.Font.Gotham
@@ -164,9 +164,9 @@ function Library:CreateUI(title, description)
         MainFrame.Visible = isActive
         clickSound:Play()
 
-        button:TweenSize(UDim2.new(0, 70, 0, 65), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.2, true)
+        button:TweenSize(UDim2.new(0, 60, 0, 50), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.2, true)
         task.wait(0.2)
-        button:TweenSize(UDim2.new(0, 50, 0, 50), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.2, true)
+        button:TweenSize(UDim2.new(0, 30, 0, 30), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.2, true)
 
         button.BackgroundTransparency = 0.2
         task.wait(2)
@@ -952,7 +952,7 @@ textboxFrame.BackgroundTransparency = TransparenciaContenedor
 textboxFrame.Parent = container
 
     local borderFrame = Instance.new("Frame")
-borderFrame.Size = UDim2.new(0.5, 0, 1, 0)
+borderFrame.Size = UDim2.new(1, 0, 1, 0)
 borderFrame.Position = UDim2.new(0, -2, 0, 0)
 borderFrame.BackgroundTransparency = 1
 borderFrame.ZIndex = textboxFrame.ZIndex -1
@@ -980,7 +980,7 @@ label.Parent = textboxFrame
 
 local textBox = Instance.new("TextBox")
 textBox.Size = UDim2.new(0, 140, 0, 30)
-textBox.Position = UDim2.new(0, 310, 0, 5)
+textBox.Position = UDim2.new(0, 320, 0, 5)
 textBox.Text = defaultText
 textBox.PlaceholderText = placeholderText
 textBox.Font = Enum.Font.Gotham
@@ -1079,7 +1079,7 @@ function Library.AddKeybind(container, text, defaultKey, callback)
 	addCorner(KeybindFrame, redondoContenedor)
 
     local borderFrame = Instance.new("Frame")
-borderFrame.Size = UDim2.new(0.5, 0, 1, 0)
+borderFrame.Size = UDim2.new(1, 0, 1, 0)
 borderFrame.Position = UDim2.new(0, -2, 0, 0)
 borderFrame.BackgroundTransparency = 1
 borderFrame.ZIndex = KeybindFrame.ZIndex -1
