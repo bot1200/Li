@@ -151,6 +151,7 @@ function Library:CreateUI(title, description)
     button.BorderSizePixel = 0
     button.BackgroundColor3 = Color3.fromRGB(0, 140, 0)
     button.Parent = screenGui
+    button.Image = "rbxassetid://97181018023171"
 
     UICorner.CornerRadius = UDim.new(0, 10)
     UICorner.Parent = button
@@ -394,12 +395,17 @@ function Library.addButton(container, buttonText, descriptionText, callback)
     label.TextColor3 = Color3.fromRGB(200, 200, 200)
     label.Parent = button
 
+    local imageFrame = Instance.new("Frame")
+    imageFrame.Size = UDim2.new(0, 20, 0, 20)
+    imageFrame.Position = UDim2.new(0, 5, 0.5, -10)
+    imageFrame.BackgroundTransparency = 0.5
+    imageFrame.Parent = button
+
     local image = Instance.new("ImageLabel")
-    image.Size = UDim2.new(0, 20, 0, 20)
-    image.Position = UDim2.new(1, -10, 0, 10)
-    image.BackgroundTransparency = 1
+    image.Size = UDim2.new(1, 0, 1, 0)
     image.Image = "rbxassetid://132454918588980"
-    image.Parent = button
+    image.BackgroundTransparency = 1
+    image.Parent = imageFrame
 
     button.MouseButton1Click:Connect(callback)
 
