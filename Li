@@ -151,8 +151,7 @@ function Library:CreateUI(title, description)
     button.BorderSizePixel = 0
     button.BackgroundColor3 = Color3.fromRGB(0, 140, 0)
     button.Parent = screenGui
-    button.Image = "rbxassetid://97181018023171"
-
+    
     UICorner.CornerRadius = UDim.new(0, 10)
     UICorner.Parent = button
 
