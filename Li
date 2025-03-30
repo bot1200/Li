@@ -992,8 +992,8 @@ label.BackgroundTransparency = 1
 label.Parent = textboxFrame
 
 local textBox = Instance.new("TextBox")
-textBox.Size = UDim2.new(0, 130, 0, 30)
-textBox.Position = UDim2.new(0, 100, 0, 5)
+textBox.Size = UDim2.new(0, 120, 0, 30)
+textBox.Position = UDim2.new(0, 50, 0, 5)
 textBox.Text = defaultText
 textBox.PlaceholderText = placeholderText
 textBox.Font = Enum.Font.Gotham
