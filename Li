@@ -359,6 +359,8 @@ MainFrame.BackgroundTransparency = 0.7
     return Tab
 end
 
+local TweenService = game:GetService("TweenService")
+
 function Library.addButton(container, buttonText, descriptionText, callback)
     local button = Instance.new("TextButton")
     button.Size = TamanoContenedor
@@ -406,7 +408,19 @@ function Library.addButton(container, buttonText, descriptionText, callback)
     image.BackgroundTransparency = 0
     image.Parent = imageFrame
 
-    button.MouseButton1Click:Connect(callback)
+    button.MouseButton1Click:Connect(function()
+        -- Crear la animación de escala
+        local tweenInfo = TweenInfo.new(0.2, Enum.EasingStyle.Bounce, Enum.EasingDirection.Out)
+        local goal = {Size = UDim2.new(1.1, 0, 1.1, 0)}  -- Aumentar el tamaño del botón
+
+        local tween = TweenService:Create(button, tweenInfo, goal)
+        tween:Play()
+
+        -- Ejecutar el callback después de la animación
+        tween.Completed:Connect(function()
+            callback()
+        end)
+    end)
 
     local count = 0
     for _, child in ipairs(container:GetChildren()) do
@@ -993,7 +1007,7 @@ label.Parent = textboxFrame
 
 local textBox = Instance.new("TextBox")
 textBox.Size = UDim2.new(0, 120, 0, 30)
-textBox.Position = UDim2.new(0, 280, 0, 5)
+textBox.Position = UDim2.new(0, 270, 0, 5)
 textBox.Text = defaultText
 textBox.PlaceholderText = placeholderText
 textBox.Font = Enum.Font.Gotham
