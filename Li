@@ -8,7 +8,7 @@ end
 
 local mainGui = Instance.new("ScreenGui")
 mainGui.Parent = coreGui
-print("Script cargado xd")
+print("lib")
 
 local function addCorner(instance, radius)
     local corner = Instance.new("UICorner")
@@ -22,8 +22,10 @@ local redondoContenedor = 10
 local TransparenciaContenedordelElementos = 0.5
 local TamanoContenedor = UDim2.new(1, 0, 0, 45)
 local TransparenciaContenedor = 0.7
-local FrameContenedor = Color3.fromRGB(0, 140, 0)
-local bordes = Color3.fromRGB(0, 140, 0)
+local FrameContenedor = Color3.fromRGB(138, 43, 250)
+local bordes = Color3.fromRGB(138, 43, 250)
+local main = Color3.fromRGB(138, 43, 226)
+local ColorContenedordelElementos = Color3.fromRGB(75, 0, 130)
 
 function Library:CreateUI(title, description)
     local ScreenGui = Instance.new("ScreenGui")
@@ -32,12 +34,12 @@ function Library:CreateUI(title, description)
     local MainFrame = Instance.new("Frame")
 MainFrame.Size = UDim2.new(0, 590, 0, 300)
 MainFrame.Position = UDim2.new(0.5, -MainFrame.Size.X.Offset / 2, 0.5, -MainFrame.Size.Y.Offset / 2 - 30)
-MainFrame.BackgroundColor3 = Color3.fromRGB(0, 120, 0)
+MainFrame.BackgroundColor3 = Color3.fromRGB(138, 43, 226)
 MainFrame.BorderSizePixel = 0
 MainFrame.Parent = ScreenGui
 MainFrame.Active = true
 MainFrame.Draggable = true
-MainFrame.BackgroundTransparency = 0.7
+MainFrame.BackgroundTransparency = 0.8
     addCorner(MainFrame, 7)
 
     local gradient = Instance.new("UIGradient")
@@ -57,15 +59,15 @@ MainFrame.BackgroundTransparency = 0.7
     local confirmationFrame = Instance.new("Frame")
     confirmationFrame.Size = UDim2.new(0, 300, 0, 150)
     confirmationFrame.Position = UDim2.new(0.5, -150, 0.5, -75)
-    confirmationFrame.BackgroundColor3 = Color3.fromRGB(0, 100, 0)
-    confirmationFrame.BackgroundTransparency = 0.2
+    confirmationFrame.BackgroundColor3 = FrameContenedor
+    confirmationFrame.BackgroundTransparency = 0.4
     confirmationFrame.Parent = backgroundOverlay
     confirmationFrame.ZIndex = 19
     addCorner(confirmationFrame, 7)
 
     local confirmationLabel = Instance.new("TextLabel")
     confirmationLabel.Text = "Are you sure you want to Destroy the GUI?"
-    confirmationLabel.TextSize = 15
+    confirmationLabel.TextSize = 12
     confirmationLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
     confirmationLabel.BackgroundTransparency = 1
     confirmationLabel.Size = UDim2.new(1, 0, 0, 50)
@@ -73,26 +75,28 @@ MainFrame.BackgroundTransparency = 0.7
     confirmationLabel.Parent = confirmationFrame
 
     local yesButton = Instance.new("TextButton")
-    yesButton.Text = "Yeah"
-    yesButton.ZIndex = 20
-    yesButton.TextSize = 16
-    yesButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-    yesButton.BackgroundColor3 = Color3.fromRGB(200, 0, 0)
-    yesButton.Size = UDim2.new(0.5, -10, 0, 40)
-    yesButton.Position = UDim2.new(0, 5, 1, -45)
-    yesButton.Parent = confirmationFrame
-    addCorner(yesButton, 4)
+yesButton.Text = "Yeah"
+yesButton.ZIndex = 20
+yesButton.TextSize = 13
+yesButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+yesButton.BackgroundColor3 = Color3.fromRGB(200, 0, 0)
+yesButton.BackgroundTransparency = 0.4
+yesButton.Size = UDim2.new(0.5, -10, 0, 40)
+yesButton.Position = UDim2.new(0, 5, 1, -45)
+yesButton.Parent = confirmationFrame
+addCorner(yesButton, 4)
 
-    local noButton = Instance.new("TextButton")
-    noButton.Text = "No"
-    noButton.TextSize = 16
-    noButton.ZIndex = 20
-    noButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-    noButton.BackgroundColor3 = Color3.fromRGB(0, 150, 0)
-    noButton.Size = UDim2.new(0.5, -10, 0, 40)
-    noButton.Position = UDim2.new(0.5, 5, 1, -45)
-    noButton.Parent = confirmationFrame
-    addCorner(noButton, 4)
+local noButton = Instance.new("TextButton")
+noButton.Text = "No"
+noButton.TextSize = 13
+noButton.ZIndex = 20
+noButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+noButton.BackgroundColor3 = Color3.fromRGB(0, 150, 0)
+noButton.BackgroundTransparency = 0.4
+noButton.Size = UDim2.new(0.5, -10, 0, 40)
+noButton.Position = UDim2.new(0.5, 5, 1, -45)
+noButton.Parent = confirmationFrame
+addCorner(noButton, 4)
 
     local CloseButton = Instance.new("TextButton")
     CloseButton.Size = UDim2.new(0, 20, 0, 20)
@@ -128,7 +132,7 @@ MainFrame.BackgroundTransparency = 0.7
     local border = Instance.new("UIStroke")
     border.Parent = MainFrame
     border.Thickness = 2
-    border.Color = Color3.fromRGB(0, 255, 100)
+    border.Color = bordes
     border.Transparency = 0.5
 
     local screenGui = Instance.new("ScreenGui")
@@ -149,7 +153,7 @@ MainFrame.BackgroundTransparency = 0.7
     button.BackgroundTransparency = 0.7
     button.Draggable = true
     button.BorderSizePixel = 0
-    button.BackgroundColor3 = Color3.fromRGB(0, 140, 0)
+    button.BackgroundColor3 = bordes
     button.Parent = screenGui
     
     UICorner.CornerRadius = UDim.new(0, 10)
@@ -178,7 +182,7 @@ MainFrame.BackgroundTransparency = 0.7
 
     local TopBar = Instance.new("Frame")
     TopBar.Size = UDim2.new(1, 0, 0, 30)
-    TopBar.BackgroundColor3 = Color3.fromRGB(0, 140, 0)
+    TopBar.BackgroundColor3 = bordes
     TopBar.BorderSizePixel = 0
     TopBar.BackgroundTransparency = 0.5
     TopBar.ZIndex = 10
@@ -188,7 +192,7 @@ MainFrame.BackgroundTransparency = 0.7
     local Line = Instance.new("Frame")
     Line.Size = UDim2.new(1, 0, 0, 2)
     Line.Position = UDim2.new(0, 0, 0, 30)
-    Line.BackgroundColor3 = Color3.fromRGB(0, 255, 100)
+    Line.BackgroundColor3 = bordes
     Line.BorderSizePixel = 0
     Line.ZIndex = 12
     Line.Parent = TopBar
@@ -212,7 +216,7 @@ MainFrame.BackgroundTransparency = 0.7
     DescriptionLabel.Text = description
     DescriptionLabel.TextSize = 14
     DescriptionLabel.ZIndex = 11
-    DescriptionLabel.TextColor3 = Color3.fromRGB(191, 255, 0)
+    DescriptionLabel.TextColor3 = Color3.fromRGB(216, 191, 216)
     DescriptionLabel.Font = Enum.Font.SourceSans
     DescriptionLabel.TextXAlignment = Enum.TextXAlignment.Left
     DescriptionLabel.Parent = TopBar
@@ -246,117 +250,155 @@ MainFrame.BackgroundTransparency = 0.7
     Container.BackgroundTransparency = 1
     addCorner(Container, 5)
 
-    local Tab = {TabsContainer = TabsContainer, Container = Container}
+local premiumIDs = {
+    2784663867,
+    87654321,
+}
 
-    function Tab:AddTab(tabName)
-        local tabButton = Instance.new("TextButton")
-        tabButton.Size = UDim2.new(1, -10, 0, 40)
-        tabButton.Text = tabName
-        tabButton.Font = Enum.Font.Gotham
-        tabButton.TextSize = 15
-        tabButton.BackgroundColor3 = Color3.fromRGB(0, 120, 0)
-        tabButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-        tabButton.BackgroundTransparency = TransparenciaContenedor
-        tabButton.Parent = TabsContainer
+local function isPlayerPremium(player)
+    for _, id in ipairs(premiumIDs) do
+        if player.UserId == id then
+            return true
+        end
+    end
+    return false
+end
 
-        local borderFrame = Instance.new("Frame")
-        borderFrame.Size = UDim2.new(1, 0, 1, 0)
-        borderFrame.Position = UDim2.new(0, -2, 0, 0)
-        borderFrame.BackgroundTransparency = 1
-        borderFrame.ZIndex = tabButton.ZIndex - 1
-        borderFrame.Parent = tabButton
+local Tab = {TabsContainer = TabsContainer, Container = Container}
 
-        local borderStroke = Instance.new("UIStroke")
-        borderStroke.Thickness = 2
-        borderStroke.Color = Color3.fromRGB(255, 255, 255)
-        borderStroke.Parent = borderFrame
-        addCorner(borderFrame, redondoContenedor)
+function Tab:AddTab(isPremium, tabName)
+    local tabButton = Instance.new("TextButton")
+    tabButton.Size = UDim2.new(1, -10, 0, 40)
+    tabButton.Text = tabName
+    tabButton.Font = Enum.Font.Gotham
+    tabButton.TextSize = 15
+    tabButton.BackgroundColor3 = main
+    tabButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+    tabButton.BackgroundTransparency = TransparenciaContenedor
+    tabButton.Parent = TabsContainer
 
-        addCorner(tabButton, 10)
+    local borderFrame = Instance.new("Frame")
+    borderFrame.Size = UDim2.new(1, 0, 1, 0)
+    borderFrame.Position = UDim2.new(0, -2, 0, 0)
+    borderFrame.BackgroundTransparency = 1
+    borderFrame.ZIndex = tabButton.ZIndex - 1
+    borderFrame.Parent = tabButton
 
-        local tabFrame = Instance.new("Frame")
-        tabFrame.Size = UDim2.new(1, 0, 1, -15)
-        tabFrame.Position = UDim2.new(0, 0, 0, 1)
-        tabFrame.BackgroundColor3 = Color3.fromRGB(0, 140, 0)
-        tabFrame.BackgroundTransparency = 1
+    local borderStroke = Instance.new("UIStroke")
+    borderStroke.Thickness = 2
+    borderStroke.Color = Color3.fromRGB(255, 255, 255)
+    borderStroke.Parent = borderFrame
+    addCorner(borderFrame, redondoContenedor)
+
+    addCorner(tabButton, 10)
+
+    local tabFrame = Instance.new("Frame")
+    tabFrame.Size = UDim2.new(1, 0, 1, -15)
+    tabFrame.Position = UDim2.new(0, 0, 0, 1)
+    tabFrame.BackgroundColor3 = Color3.fromRGB(0, 140, 0)
+    tabFrame.BackgroundTransparency = 1
+    tabFrame.Visible = true
+    local cant = #Container:GetChildren()
+    if cant == 0 then
         tabFrame.Visible = true
-        local cant = #Container:GetChildren()
-        if cant == 0 then
-            tabFrame.Visible = true
-        else
-            tabFrame.Visible = false
-        end
-        tabFrame.Parent = Container
-        addCorner(tabFrame, 5)
+    else
+        tabFrame.Visible = false
+    end
+    tabFrame.Parent = Container
+    addCorner(tabFrame, 5)
 
-        local frameScroll = Instance.new("ScrollingFrame")
-        frameScroll.Size = UDim2.new(1, -10, 1, 2)
-        frameScroll.Position = UDim2.new(0, 5, 0, 5)
-        frameScroll.CanvasSize = UDim2.new(0, 0, 0, 0)
-        frameScroll.ScrollBarThickness = 0
-        frameScroll.BackgroundColor3 = Color3.fromRGB(0, 140, 0)
-        frameScroll.BackgroundTransparency = 1
-        frameScroll.ScrollingDirection = Enum.ScrollingDirection.Y
-        frameScroll.Parent = tabFrame
-        addCorner(frameScroll, 5)
+    local frameScroll = Instance.new("ScrollingFrame")
+    frameScroll.Size = UDim2.new(1, -10, 1, 2)
+    frameScroll.Position = UDim2.new(0, 5, 0, 5)
+    frameScroll.CanvasSize = UDim2.new(0, 0, 0, 0)
+    frameScroll.ScrollBarThickness = 0
+    frameScroll.BackgroundColor3 = Color3.fromRGB(0, 140, 0)
+    frameScroll.BackgroundTransparency = 1
+    frameScroll.ScrollingDirection = Enum.ScrollingDirection.Y
+    frameScroll.Parent = tabFrame
+    addCorner(frameScroll, 5)
 
-        local buttonLayout = Instance.new("UIListLayout")
-        buttonLayout.Padding = UDim.new(0, 8)
-        buttonLayout.SortOrder = Enum.SortOrder.LayoutOrder
-        buttonLayout.Parent = frameScroll
+    local buttonLayout = Instance.new("UIListLayout")
+    buttonLayout.Padding = UDim.new(0, 8)
+    buttonLayout.SortOrder = Enum.SortOrder.LayoutOrder
+    buttonLayout.Parent = frameScroll
 
-        buttonLayout:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(function()
-            frameScroll.CanvasSize = UDim2.new(0, 0, 0, buttonLayout.AbsoluteContentSize.Y)
+    buttonLayout:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(function()
+        frameScroll.CanvasSize = UDim2.new(0, 0, 0, buttonLayout.AbsoluteContentSize.Y)
+    end)
+
+    local function animarBrillo()
+        local brillo = Instance.new("Frame")
+        brillo.Size = UDim2.new(1, 0, 1, 0)
+        brillo.Position = tabButton.Position
+        brillo.BackgroundColor3 = Color3.fromRGB(169, 169, 169)
+        brillo.BackgroundTransparency = 0
+        brillo.Parent = tabButton
+        addCorner(brillo, 5)
+
+        local tweenInfoMove = TweenInfo.new(1, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut, 0, false)
+        local tweenInfoTransparency = TweenInfo.new(0.5, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut, 0, false)
+
+        local goalMove = {Position = UDim2.new(-1, 0, 0, 0)}
+        local goalTransparency = {BackgroundTransparency = TransparenciaContenedor}
+
+        local tweenMove = TweenService:Create(brillo, tweenInfoMove, goalMove)
+        local tweenTransparency = TweenService:Create(brillo, tweenInfoTransparency, goalTransparency)
+
+        tweenMove:Play()
+        tweenTransparency:Play()
+
+        tweenMove.Completed:Connect(function()
+            brillo:Destroy()
         end)
-
-        local function animarBrillo()
-            local brillo = Instance.new("Frame")
-            brillo.Size = UDim2.new(1, 0, 1, 0)
-            brillo.Position = tabButton.Position
-            brillo.BackgroundColor3 = Color3.fromRGB(169, 169, 169)
-            brillo.BackgroundTransparency = 0
-            brillo.Parent = tabButton
-            addCorner(brillo, 5)
-
-            local tweenInfoMove = TweenInfo.new(1, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut, 0, false)
-            local tweenInfoTransparency = TweenInfo.new(0.5, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut, 0, false)
-
-            local goalMove = {Position = UDim2.new(-1, 0, 0, 0)}
-            local goalTransparency = {BackgroundTransparency = TransparenciaContenedor}
-
-            local tweenMove = TweenService:Create(brillo, tweenInfoMove, goalMove)
-            local tweenTransparency = TweenService:Create(brillo, tweenInfoTransparency, goalTransparency)
-
-            tweenMove:Play()
-            tweenTransparency:Play()
-
-            tweenMove.Completed:Connect(function()
-                brillo:Destroy()
-            end)
-        end
-
-        tabButton.MouseButton1Click:Connect(function()
-            animarBrillo()
-
-            for _, button in pairs(TabsContainer:GetChildren()) do
-                if button:IsA("TextButton") then
-                    button.BackgroundColor3 = Color3.fromRGB(0, 120, 0)
-                end
-            end
-            tabButton.BackgroundColor3 = Color3.fromRGB(0, 100, 0)
-
-            for _, frame in pairs(Container:GetChildren()) do
-                if frame:IsA("Frame") then
-                    frame.Visible = false
-                end
-            end
-            tabFrame.Visible = true
-        end)
-
-        return frameScroll
     end
 
-    return Tab
+    tabButton.MouseButton1Click:Connect(function()
+        animarBrillo()
+
+        for _, button in pairs(TabsContainer:GetChildren()) do
+            if button:IsA("TextButton") then
+                button.BackgroundColor3 = main
+            end
+        end
+        tabButton.BackgroundColor3 = Color3.fromRGB(75, 0, 130)
+
+        for _, frame in pairs(Container:GetChildren()) do
+            if frame:IsA("Frame") then
+                frame.Visible = false
+            end
+        end
+        tabFrame.Visible = true
+    end)
+
+    if isPremium then
+        local Players = game:GetService("Players")
+        local LocalPlayer = Players.LocalPlayer
+        if not isPlayerPremium(LocalPlayer) then
+            local overlay = Instance.new("Frame")
+            overlay.Size = UDim2.new(1, 0, 1, 0)
+            overlay.Active = true
+            overlay.BackgroundColor3 = Color3.new(0, 0, 0)
+            overlay.BackgroundTransparency = 0.5
+            overlay.ZIndex = tabFrame.ZIndex + 1
+            overlay.Parent = tabFrame
+
+            local label = Instance.new("TextLabel")
+            label.Size = UDim2.new(1, 0, 0, 30)
+            label.Position = UDim2.new(0, 0, 0.5, -15)
+            label.BackgroundTransparency = 1
+            label.Text = "Premium only"
+            label.TextColor3 = Color3.new(1, 1, 1)
+            label.Font = Enum.Font.GothamBold
+            label.TextSize = 20
+            label.Parent = overlay
+        end
+    end
+
+    return frameScroll
+end
+
+return Tab
 end
 
 function Library.addButton(container, buttonText, descriptionText, callback)
@@ -523,7 +565,7 @@ confirmButton.Text = "Confirm"
 confirmButton.Font = Enum.Font.Gotham
 confirmButton.TextSize = 14
 confirmButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-confirmButton.BackgroundColor3 = Color3.fromRGB(0, 100, 0) -- Botón Confirmar verde
+confirmButton.BackgroundColor3 = ColorContenedordelElementos
 confirmButton.BorderSizePixel = 0
 confirmButton.Parent = colorPickerPopup
 addCorner(confirmButton, 5)
@@ -535,7 +577,7 @@ rainbowButton.Text = "Rainbow"
 rainbowButton.Font = Enum.Font.Gotham
 rainbowButton.TextSize = 14
 rainbowButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-rainbowButton.BackgroundColor3 = Color3.fromRGB(0, 100, 0) -- Botón Rainbow verde
+rainbowButton.BackgroundColor3 = ColorContenedordelElementos
 rainbowButton.BorderSizePixel = 0
 rainbowButton.Parent = colorPickerPopup
 addCorner(rainbowButton, 5)
@@ -668,7 +710,7 @@ label.Parent = toggleFrame
 local toggleButton = Instance.new("TextButton")
 toggleButton.Size = UDim2.new(0, 45, 0, 25)
 toggleButton.Position = UDim2.new(1, -70, 0.5, -10)
-toggleButton.BackgroundColor3 = Color3.fromRGB(0, 80, 10)
+toggleButton.BackgroundColor3 = ColorContenedordelElementos
 toggleButton.Text = ""
 toggleButton.AutoButtonColor = false
 toggleButton.Parent = toggleFrame
@@ -753,7 +795,7 @@ sliderTextBox.TextSize = 18
 sliderTextBox.BackgroundTransparency = TransparenciaContenedordelElementos
 sliderTextBox.TextColor3 = Color3.fromRGB(255, 255, 255)
 sliderTextBox.TextXAlignment = Enum.TextXAlignment.Center
-sliderTextBox.BackgroundColor3 = Color3.fromRGB(0, 150, 0)
+sliderTextBox.BackgroundColor3 = ColorContenedordelElementos
 sliderTextBox.ClearTextOnFocus = false
 sliderTextBox.Parent = sliderFrame
 addCorner(sliderTextBox, 6)
@@ -762,13 +804,13 @@ local sliderTrack = Instance.new("Frame")
 sliderTrack.Size = UDim2.new(1, -40, 0, 6)
 sliderTrack.Position = UDim2.new(0, 20, 0, 30)
 sliderTrack.BackgroundTransparency = TransparenciaContenedordelElementos
-sliderTrack.BackgroundColor3 = Color3.fromRGB(0, 150, 0)
+sliderTrack.BackgroundColor3 = ColorContenedordelElementos
 sliderTrack.Parent = sliderFrame
 addCorner(sliderTrack, 6)
 
 local sliderFill = Instance.new("Frame")
 sliderFill.Size = UDim2.new(0, 0, 1, 0)
-sliderFill.BackgroundColor3 = Color3.fromRGB(0, 120, 0)
+sliderFill.BackgroundColor3 = main
 sliderFill.Parent = sliderTrack
 sliderFill.BackgroundTransparency = TransparenciaContenedordelElementos
 addCorner(sliderFill, 6)
@@ -872,7 +914,7 @@ addCorner(borderFrame, redondoContenedor)
     local dropdownFrame = Instance.new("Frame")
     dropdownFrame.Size = UDim2.new(0, 140, 0, 30)
 dropdownFrame.Position = UDim2.new(0, 250, 0, 5)
-    dropdownFrame.BackgroundColor3 = Color3.fromRGB(0, 140, 0)
+    dropdownFrame.BackgroundColor3 = ColorContenedordelElementos
     dropdownFrame.Parent = Dropdown
     dropdownFrame.BackgroundTransparency = 1
     addCorner(dropdownFrame, 5)
@@ -885,7 +927,7 @@ dropdownFrame.Position = UDim2.new(0, 250, 0, 5)
     dropdownButton.TextSize = 13
     dropdownButton.BackgroundTransparency = TransparenciaContenedordelElementos
     dropdownButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-    dropdownButton.BackgroundColor3 = Color3.fromRGB(0, 130, 0)
+    dropdownButton.BackgroundColor3 = ColorContenedordelElementos
     dropdownButton.Parent = dropdownFrame
     addCorner(dropdownButton, 5)
 
@@ -893,7 +935,7 @@ dropdownFrame.Position = UDim2.new(0, 250, 0, 5)
     dropdownList.Size = UDim2.new(1, 0, 0, 0)
     dropdownList.Position = UDim2.new(0, 0, 1, 5)
     dropdownList.Visible = false
-    dropdownList.BackgroundColor3 = Color3.fromRGB(0, 130, 0)
+    dropdownList.BackgroundColor3 = ColorContenedordelElementos
     dropdownList.ClipsDescendants = true
     dropdownList.BackgroundTransparency = TransparenciaContenedordelElementos
     dropdownList.Parent = dropdownFrame
@@ -948,16 +990,16 @@ dropdownFrame.Position = UDim2.new(0, 250, 0, 5)
             optionButton.BackgroundTransparency = TransparenciaContenedordelElementos
             optionButton.ZIndex = 4  
             optionButton.TextColor3 = Color3.fromRGB(255, 255, 255)  
-            optionButton.BackgroundColor3 = Color3.fromRGB(0, 100, 0)  
+            optionButton.BackgroundColor3 = ColorContenedordelElementos
             optionButton.Parent = scrollFrame  
             addCorner(optionButton, 4)  
 
             optionButton.MouseEnter:Connect(function()  
-                optionButton.BackgroundColor3 = Color3.fromRGB(0, 160, 0)  
+                optionButton.BackgroundColor3 = Color3.fromRGB(150, 100, 255)
             end)  
 
             optionButton.MouseLeave:Connect(function()  
-                optionButton.BackgroundColor3 = Color3.fromRGB(0, 100, 0)  
+                optionButton.BackgroundColor3 = ColorContenedordelElementos
             end)  
 
             optionButton.MouseButton1Click:Connect(function()  
@@ -1027,7 +1069,7 @@ textBox.TextColor3 = Color3.fromRGB(255, 255, 255)
 textBox.BackgroundColor3 = Color3.fromRGB(0, 180, 0)
 textBox.Parent = textboxFrame
 
-textBox.BackgroundColor3 = Color3.fromRGB(0, 160, 0)
+textBox.BackgroundColor3 = ColorContenedordelElementos
 textBox.TextColor3 = Color3.fromRGB(255, 255, 255)
 textboxFrame.BackgroundColor3 = FrameContenedor
 
@@ -1151,7 +1193,7 @@ addCorner(borderFrame, redondoContenedor)
 	local KeybindButton = Instance.new("TextButton")
 	KeybindButton.Name = "KeybindButton"
 	KeybindButton.Parent = KeybindFrame
-	KeybindButton.BackgroundColor3 = Color3.fromRGB(0, 160, 0)
+	KeybindButton.BackgroundColor3 = ColorContenedordelElementos
 	KeybindButton.Position = UDim2.new(0, 310, 0, 5)
 	KeybindButton.Size = UDim2.new(0, 140, 0, 30)
 	KeybindButton.Font = Enum.Font.Gotham
