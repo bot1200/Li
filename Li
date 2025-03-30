@@ -8,7 +8,7 @@ end
 
 local mainGui = Instance.new("ScreenGui")
 mainGui.Parent = coreGui
-print("Script cargado")
+print("Script cargado xd")
 
 local function addCorner(instance, radius)
     local corner = Instance.new("UICorner")
@@ -30,14 +30,14 @@ function Library:CreateUI(title, description)
     ScreenGui.Parent = mainGui
 
     local MainFrame = Instance.new("Frame")
-    MainFrame.Size = UDim2.new(0, 650, 0, 340)
-    MainFrame.Position = UDim2.new(0.5, -335, 0.5, -212)
-    MainFrame.BackgroundColor3 = Color3.fromRGB(0, 120, 0)
-    MainFrame.BorderSizePixel = 0
-    MainFrame.Parent = ScreenGui
-    MainFrame.Active = true
-    MainFrame.Draggable = true
-    MainFrame.BackgroundTransparency = 0.7
+MainFrame.Size = UDim2.new(0, 590, 0, 300)
+MainFrame.Position = UDim2.new(0.5, -MainFrame.Size.X.Offset / 2, 0.5, -MainFrame.Size.Y.Offset / 2 - 30)
+MainFrame.BackgroundColor3 = Color3.fromRGB(0, 120, 0)
+MainFrame.BorderSizePixel = 0
+MainFrame.Parent = ScreenGui
+MainFrame.Active = true
+MainFrame.Draggable = true
+MainFrame.BackgroundTransparency = 0.7
     addCorner(MainFrame, 7)
 
     local gradient = Instance.new("UIGradient")
