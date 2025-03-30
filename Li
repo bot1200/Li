@@ -849,7 +849,7 @@ addCorner(borderFrame, redondoContenedor)
 
     local dropdownFrame = Instance.new("Frame")
     dropdownFrame.Size = UDim2.new(0, 140, 0, 30)
-dropdownFrame.Position = UDim2.new(0, 360, 0, 5)
+dropdownFrame.Position = UDim2.new(0, 295, 0, 5)
     dropdownFrame.BackgroundColor3 = Color3.fromRGB(0, 140, 0)
     dropdownFrame.Parent = Dropdown
     dropdownFrame.BackgroundTransparency = 1
@@ -992,7 +992,7 @@ label.BackgroundTransparency = 1
 label.Parent = textboxFrame
 
 local textBox = Instance.new("TextBox")
-textBox.Size = UDim2.new(0, 140, 0, 30)
+textBox.Size = UDim2.new(0, 130, 0, 30)
 textBox.Position = UDim2.new(0, 150, 0, 5)
 textBox.Text = defaultText
 textBox.PlaceholderText = placeholderText
