@@ -359,8 +359,6 @@ MainFrame.BackgroundTransparency = 0.7
     return Tab
 end
 
-local TweenService = game:GetService("TweenService")
-
 function Library.addButton(container, buttonText, descriptionText, callback)
     local button = Instance.new("TextButton")
     button.Size = TamanoContenedor
@@ -372,7 +370,7 @@ function Library.addButton(container, buttonText, descriptionText, callback)
     button.TextColor3 = Color3.fromRGB(255, 255, 255)
     button.Parent = container
     addCorner(button, redondoContenedor)
-    
+
     local borderFrame = Instance.new("Frame")
     borderFrame.Size = UDim2.new(1, 0, 1, 0)
     borderFrame.Position = UDim2.new(0, -2, 0, 0)
@@ -385,7 +383,7 @@ function Library.addButton(container, buttonText, descriptionText, callback)
     borderStroke.Color = Color3.fromRGB(255, 255, 255)
     borderStroke.Parent = borderFrame
     addCorner(borderFrame, redondoContenedor)
-    
+
     local label = Instance.new("TextLabel")
     label.Size = UDim2.new(1, -10, 0, 20)
     label.Position = UDim2.new(0, 0, 0, button.TextBounds.Y + 8)
@@ -408,19 +406,29 @@ function Library.addButton(container, buttonText, descriptionText, callback)
     image.BackgroundTransparency = 0
     image.Parent = imageFrame
 
-    button.MouseButton1Click:Connect(function()
-        -- Crear la animación de escala
-        local tweenInfo = TweenInfo.new(0.2, Enum.EasingStyle.Bounce, Enum.EasingDirection.Out)
-        local goal = {Size = UDim2.new(1.1, 0, 1.1, 0)}  -- Aumentar el tamaño del botón
+    -- Crear un Tween para el efecto de brillo gris
+    local tweenService = game:GetService("TweenService")
+    local tweenInfo = TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out, 0, false, 0)
+    local goal = {BackgroundColor3 = Color3.fromRGB(200, 200, 200)}  -- Gris claro
 
-        local tween = TweenService:Create(button, tweenInfo, goal)
+    local originalColor = button.BackgroundColor3  -- Guardamos el color original
+
+    local function onButtonClick()
+        -- Iniciar el tween
+        local tween = tweenService:Create(button, tweenInfo, goal)
         tween:Play()
 
-        -- Ejecutar el callback después de la animación
+        -- Volver al color original después de un pequeño retraso
         tween.Completed:Connect(function()
-            callback()
+            task.wait(0.1)  -- Esperar para un efecto más realista
+            button.BackgroundColor3 = originalColor
         end)
-    end)
+
+        -- Llamar al callback
+        callback()
+    end
+
+    button.MouseButton1Click:Connect(onButtonClick)
 
     local count = 0
     for _, child in ipairs(container:GetChildren()) do
@@ -431,7 +439,7 @@ function Library.addButton(container, buttonText, descriptionText, callback)
     if count % 4 == 0 then
         task.wait(0.3)
     end
-    
+
     return button, label
 end
 
