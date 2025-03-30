@@ -455,7 +455,7 @@ label.Parent = ColorPicker
 
 local pickerFrame = Instance.new("Frame")
 pickerFrame.Size = UDim2.new(0, 140, 0, 30)
-pickerFrame.Position = UDim2.new(0, 310, 0, 5)
+pickerFrame.Position = UDim2.new(0, 250, 0, 5)
 pickerFrame.BackgroundColor3 = defaultColor or Color3.fromRGB(0, 140, 0) -- Verde como color predeterminado
 pickerFrame.BackgroundTransparency = 0.1
 pickerFrame.BorderSizePixel = 2
@@ -993,7 +993,7 @@ label.Parent = textboxFrame
 
 local textBox = Instance.new("TextBox")
 textBox.Size = UDim2.new(0, 130, 0, 30)
-textBox.Position = UDim2.new(0, 130, 0, 5)
+textBox.Position = UDim2.new(0, 100, 0, 5)
 textBox.Text = defaultText
 textBox.PlaceholderText = placeholderText
 textBox.Font = Enum.Font.Gotham
