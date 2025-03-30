@@ -1080,22 +1080,15 @@ function Library.addLabel(container, text)
     corner.CornerRadius = UDim.new(0, 8)
     corner.Parent = labelFrame
 
-    -- Agregar funcionalidad extra con metatables
-    local labelProxy = { Instance = label }
-    setmetatable(labelProxy, {
-        __index = function(tbl, key)
-            return tbl.Instance[key]
-        end,
-        __newindex = function(tbl, key, value)
-            tbl.Instance[key] = value
-        end
-    })
+    local labelObject = {
+        Label = label
+    }
 
-    function labelProxy:Set(newText)
-        self.Instance.Text = newText
+    function labelObject:Set(newText)
+        self.Label.Text = newText
     end
 
-    return labelProxy -- Devuelve el objeto con la función `Set`
+    return labelObject 
 end
 
 function Library.AddKeybind(container, text, defaultKey, callback)
