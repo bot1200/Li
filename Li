@@ -993,7 +993,7 @@ label.Parent = textboxFrame
 
 local textBox = Instance.new("TextBox")
 textBox.Size = UDim2.new(0, 120, 0, 30)
-textBox.Position = UDim2.new(0, 260, 0, 5)
+textBox.Position = UDim2.new(0, 280, 0, 5)
 textBox.Text = defaultText
 textBox.PlaceholderText = placeholderText
 textBox.Font = Enum.Font.Gotham
@@ -1067,7 +1067,7 @@ function Library.addLabel(container, text)
     labelFrame.Parent = container
 
     local label = Instance.new("TextLabel")
-    label.Size = UDim2.new(1, -10, 1, -10)
+    label.Size = UDim2.new(1, -8, 1, -10)
     label.Position = UDim2.new(0, 10, 0, 0)
     label.Text = text
     label.Font = Enum.Font.GothamBold
@@ -1075,6 +1075,10 @@ function Library.addLabel(container, text)
     label.TextColor3 = Color3.fromRGB(255, 255, 255)
     label.BackgroundTransparency = 1
     label.Parent = labelFrame
+    
+    function label:Set(newText)
+        label.Text = newText
+    end
 
     local corner = Instance.new("UICorner")
     corner.CornerRadius = UDim.new(0, 8)
