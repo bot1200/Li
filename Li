@@ -27,7 +27,8 @@ local bordes = Color3.fromRGB(138, 43, 250)
 local main = Color3.fromRGB(138, 43, 226)
 local ColorContenedordelElementos = Color3.fromRGB(75, 0, 130)
 
-function Library:CreateUI(title, description)
+function Library:CreateUI(title, description, allowedUserIds)
+    self.allowedUserIds = allowedUserIds or {} -- Recibimos la lista externa
     local ScreenGui = Instance.new("ScreenGui")
     ScreenGui.Parent = mainGui
 
@@ -280,19 +281,14 @@ addCorner(noButton, 4)
     Container.BackgroundTransparency = 1
     addCorner(Container, 5)
 
-local allowedUserIds = {
-    2784663867,
-    87654321,
-}
-
 local function isPlayerPremium(player)
-    for _, id in ipairs(allowedUserIds) do
-        if player.UserId == id then
-            return true
+        for _, id in ipairs(self.allowedUserIds) do
+            if player.UserId == id then
+                return true
+            end
         end
+        return false
     end
-    return false
-end
 
 local Tab = {TabsContainer = TabsContainer, Container = Container}
 
@@ -1140,6 +1136,7 @@ section.Size = TamanoContenedor
 section.BackgroundTransparency = 0.4
 section.BackgroundColor3 = FrameContenedor
 section.Parent = container
+addCorner(section, 5)
 
     local sectionLabel = Instance.new("TextLabel")
     sectionLabel.Size = UDim2.new(0, 200, 1, 0)
@@ -1183,72 +1180,6 @@ function Library.addLabel(container, text)
     end
 
     return labelObject 
-end
-
-function Library.addTextElement(container, text, imageId)
-    local layout = container:FindFirstChild("UIListLayout")
-    if not layout then
-        layout = Instance.new("UIListLayout")
-        layout.Parent = container
-        layout.FillDirection = Enum.FillDirection.Vertical
-        layout.HorizontalAlignment = Enum.HorizontalAlignment.Left
-        layout.SortOrder = Enum.SortOrder.LayoutOrder
-        layout.Padding = UDim.new(0, 5)
-    end
-
-    local elementFrame = Instance.new("Frame")
-    elementFrame.Size = UDim2.new(1, 0, 0, 30)
-    elementFrame.BackgroundColor3 = FrameContenedor
-    elementFrame.BackgroundTransparency = 0.8
-    elementFrame.Parent = container
-
-    if imageId then
-        local image = Instance.new("ImageLabel")
-        image.Size = UDim2.new(0, 30, 0, 30)
-        image.Image = "rbxassetid://" .. imageId
-        image.BackgroundTransparency = 1
-        image.Parent = elementFrame
-    end
-
-    local textLabel = Instance.new("TextLabel")
-    textLabel.Size = UDim2.new(1, -40, 0, 20)
-    textLabel.Position = UDim2.new(0, imageId and 35 or 0, 0, 5)
-    textLabel.Text = text
-    textLabel.Font = Enum.Font.GothamBold
-    textLabel.TextSize = 12
-    textLabel.TextWrapped = true
-    textLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-    textLabel.BackgroundTransparency = 1
-    textLabel.Parent = elementFrame
-
-    textLabel:GetPropertyChangedSignal("TextBounds"):Connect(function()
-        local newHeight = math.max(30, textLabel.TextBounds.Y + 10)
-        elementFrame.Size = UDim2.new(1, 0, 0, newHeight)
-    end)
-
-    local corner = Instance.new("UICorner")
-    corner.CornerRadius = UDim.new(0, 8)
-    corner.Parent = elementFrame
-
-    local function adjustContainerSize()
-        local totalHeight = 0
-        for _, child in pairs(container:GetChildren()) do
-            if child:IsA("Frame") then
-                totalHeight = totalHeight + child.Size.Y.Offset + layout.Padding.Offset
-            end
-        end
-        container.Size = UDim2.new(container.Size.X.Scale, container.Size.X.Offset, 0, totalHeight)
-    end
-
-    adjustContainerSize()
-
-    return {
-        Label = textLabel,
-        Frame = elementFrame,
-        Set = function(self, newText)
-            self.Label.Text = newText
-        end
-    }
 end
 
 function Library.AddKeybind(container, text, defaultKey, callback)
