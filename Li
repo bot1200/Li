@@ -8,7 +8,7 @@ end
 
 local mainGui = Instance.new("ScreenGui")
 mainGui.Parent = coreGui
-print("lib")
+print("aver")
 
 local function addCorner(instance, radius)
     local corner = Instance.new("UICorner")
@@ -28,20 +28,20 @@ local main = Color3.fromRGB(138, 43, 226)
 local ColorContenedordelElementos = Color3.fromRGB(75, 0, 130)
 
 function Library:CreateUI(title, description, allowedUserIds)
-    self.allowedUserIds = allowedUserIds or {} -- Recibimos la lista externa
+    self.allowedUserIds = allowedUserIds or {}
     local ScreenGui = Instance.new("ScreenGui")
     ScreenGui.Parent = mainGui
 
-    local MainFrame = Instance.new("Frame")
-MainFrame.Size = UDim2.new(0, 590, 0, 300)
-MainFrame.Position = UDim2.new(0.5, -MainFrame.Size.X.Offset / 2, 0.5, -MainFrame.Size.Y.Offset / 2 - 30)
-MainFrame.BackgroundColor3 = Color3.fromRGB(138, 43, 226)
-MainFrame.BorderSizePixel = 0
-MainFrame.Parent = ScreenGui
-MainFrame.Active = true
-MainFrame.Draggable = true
-MainFrame.BackgroundTransparency = 0.8
-    addCorner(MainFrame, 7)
+self.MainFrame = Instance.new("Frame")
+self.MainFrame.Size = UDim2.new(0, 590, 0, 300)
+self.MainFrame.Position = UDim2.new(0.5, -self.MainFrame.Size.X.Offset / 2, 0.5, -self.MainFrame.Size.Y.Offset / 2 - 30)
+self.MainFrame.BackgroundColor3 = Color3.fromRGB(138, 43, 226)
+self.MainFrame.BorderSizePixel = 0
+self.MainFrame.Parent = ScreenGui
+self.MainFrame.Active = true
+self.MainFrame.Draggable = true
+self.MainFrame.BackgroundTransparency = 0.8
+addCorner(self.MainFrame, 7)
 
     local gradient = Instance.new("UIGradient")
     gradient.Parent = MainFrame
@@ -135,7 +135,7 @@ addCorner(noButton, 4)
     MinimizeButton.Position = UDim2.new(1, -50, 0, 0)
     MinimizeButton.BackgroundTransparency = 1
     MinimizeButton.Text = "-"
-    MinimizeButton.ZIndex = 11
+    MinimizeButton.ZIndex = 19
     MinimizeButton.TextSize = 16
     MinimizeButton.TextColor3 = Color3.fromRGB(255, 255, 255)
     MinimizeButton.Font = Enum.Font.SourceSans
@@ -1132,7 +1132,7 @@ end
 
 function Library.addSection(container, title)
 local section = Instance.new("Frame")
-section.Size = TamanoContenedor
+section.Size = UDim2.new(1, 0, 0, 36)
 section.BackgroundTransparency = 0.4
 section.BackgroundColor3 = FrameContenedor
 section.Parent = container
