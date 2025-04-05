@@ -56,6 +56,7 @@ backgroundOverlay.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
 backgroundOverlay.BackgroundTransparency = 0.4
 backgroundOverlay.Parent = MainFrame
 backgroundOverlay.Visible = false
+addCorner(backgroundOverlay, 8)
 
 local confirmationFrame = Instance.new("Frame")
 confirmationFrame.Size = UDim2.new(0, 300, 0, 150)
@@ -100,7 +101,7 @@ end)
 
 local widthTextBox = Instance.new("TextBox")
 widthTextBox.Size = UDim2.new(0, 100, 0, 30)
-widthTextBox.Position = UDim2.new(0.5, -50, 0.5, -30)
+widthTextBox.Position = UDim2.new(0.5, -105, 0.5, -15)
 widthTextBox.Text = tostring(MainFrame.Size.X.Offset)
 widthTextBox.PlaceholderText = "Width"
 widthTextBox.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -112,7 +113,7 @@ addCorner(widthTextBox, 6)
 
 local heightTextBox = Instance.new("TextBox")
 heightTextBox.Size = UDim2.new(0, 100, 0, 30)
-heightTextBox.Position = UDim2.new(0.5, -50, 0.5, 10)
+heightTextBox.Position = UDim2.new(0.5, 5, 0.5, -15)
 heightTextBox.Text = tostring(MainFrame.Size.Y.Offset)
 heightTextBox.PlaceholderText = "Height"
 heightTextBox.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -123,8 +124,8 @@ heightTextBox.Parent = backgroundOverlay
 addCorner(heightTextBox, 6)
 
 local applySizeButton = Instance.new("TextButton")
-applySizeButton.Size = UDim2.new(0, 200, 0, 40)
-applySizeButton.Position = UDim2.new(0.5, -100, 0.5, 50)
+applySizeButton.Size = UDim2.new(0, 100, 0, 40)
+applySizeButton.Position = UDim2.new(0.5, 10, 0.5, 40)
 applySizeButton.Text = "Apply Size"
 applySizeButton.TextSize = 14
 applySizeButton.TextColor3 = Color3.fromRGB(255, 255, 255)
