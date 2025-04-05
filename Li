@@ -8,7 +8,7 @@ end
 
 local mainGui = Instance.new("ScreenGui")
 mainGui.Parent = coreGui
-print("aver")
+print("lib")
 
 local function addCorner(instance, radius)
     local corner = Instance.new("UICorner")
@@ -41,10 +41,10 @@ self.MainFrame.Parent = ScreenGui
 self.MainFrame.Active = true
 self.MainFrame.Draggable = true
 self.MainFrame.BackgroundTransparency = 0.8
-addCorner(self.MainFrame, 7)
+    addCorner(self.MainFrame, 7)
 
     local gradient = Instance.new("UIGradient")
-    gradient.Parent = MainFrame
+    gradient.Parent = self.MainFrame
     gradient.Color = ColorSequence.new(Color3.fromRGB(0, 255, 100), Color3.fromRGB(0, 180, 0))
     gradient.Rotation = 70
 
@@ -54,7 +54,7 @@ addCorner(self.MainFrame, 7)
     backgroundOverlay.ZIndex = 18
     backgroundOverlay.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
     backgroundOverlay.BackgroundTransparency = 0.4
-    backgroundOverlay.Parent = MainFrame
+    backgroundOverlay.Parent = self.MainFrame
     backgroundOverlay.Visible = false
 
     local confirmationFrame = Instance.new("Frame")
@@ -108,14 +108,14 @@ addCorner(noButton, 4)
     CloseButton.TextSize = 16
     CloseButton.TextColor3 = Color3.fromRGB(255, 100, 100)
     CloseButton.Font = Enum.Font.SourceSans
-    CloseButton.Parent = MainFrame
+    CloseButton.Parent = self.MainFrame
 
     CloseButton.MouseButton1Click:Connect(function()
         backgroundOverlay.Visible = true
     end)
 
     yesButton.MouseButton1Click:Connect(function()
-        MainFrame:Destroy()
+        self.MainFrame:Destroy()
     end)
 
     noButton.MouseButton1Click:Connect(function()
@@ -141,14 +141,14 @@ addCorner(noButton, 4)
     MinimizeButton.Font = Enum.Font.SourceSans
     MinimizeButton.Parent = TopBar
     
-    local normalSize = MainFrame.Size
+    local normalSize = self.MainFrame.Size
     local minimizedSize = UDim2.new(normalSize.X.Scale, normalSize.X.Offset, 0, 30)
     local tweenInfoMinimize = TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
 
     MinimizeButton.MouseButton1Click:Connect(function()
-        local isMinimized = MainFrame.Size == minimizedSize
+        local isMinimized = self.MainFrame.Size == minimizedSize
         local targetSize = isMinimized and normalSize or minimizedSize
-        TweenService:Create(MainFrame, tweenInfoMinimize, { Size = targetSize }):Play()
+        TweenService:Create(self.MainFrame, tweenInfoMinimize, { Size = targetSize }):Play()
         MinimizeButton.Text = isMinimized and "-" or "+"
     end)
 
@@ -161,7 +161,7 @@ addCorner(noButton, 4)
     end)
 
     local border = Instance.new("UIStroke")
-    border.Parent = MainFrame
+    border.Parent = self.MainFrame
     border.Thickness = 2
     border.Color = bordes
     border.Transparency = 0.5
@@ -197,7 +197,7 @@ addCorner(noButton, 4)
 
     local function toggleButton()
         isActive = not isActive
-        MainFrame.Visible = isActive
+        self.MainFrame.Visible = isActive
         clickSound:Play()
 
         button:TweenSize(UDim2.new(0, 65, 0, 55), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.2, true)
@@ -217,7 +217,7 @@ addCorner(noButton, 4)
     TopBar.BorderSizePixel = 0
     TopBar.BackgroundTransparency = 0.5
     TopBar.ZIndex = 10
-    TopBar.Parent = MainFrame
+    TopBar.Parent = self.MainFrame
     addCorner(TopBar, 5)
 
     local Line = Instance.new("Frame")
@@ -259,7 +259,7 @@ addCorner(noButton, 4)
     TabsContainer.BorderSizePixel = 0
     TabsContainer.CanvasSize = UDim2.new(0, 0, 0, 0)
     TabsContainer.ScrollBarThickness = 0
-    TabsContainer.Parent = MainFrame
+    TabsContainer.Parent = self.MainFrame
     TabsContainer.BackgroundTransparency = 1
     addCorner(TabsContainer, 5)
 
@@ -277,7 +277,7 @@ addCorner(noButton, 4)
     Container.Position = UDim2.new(0.3, 0, 0, 30)
     Container.BackgroundColor3 = Color3.fromRGB(0, 140, 0)
     Container.BorderSizePixel = 0
-    Container.Parent = MainFrame
+    Container.Parent = self.MainFrame
     Container.BackgroundTransparency = 1
     addCorner(Container, 5)
 
