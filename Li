@@ -54,7 +54,6 @@ getgenv().loadConfig = function()
         local success, data = pcall(function()
             return game.HttpService:JSONDecode(readfile(getgenv().configFileName))
         end)
-
         if success and type(data) == "table" then
             return data
         end
@@ -151,6 +150,7 @@ widthTextBox.BackgroundColor3 = confirmationFrame.BackgroundColor3
 widthTextBox.TextSize = 14
 widthTextBox.ZIndex = 20
 widthTextBox.Parent = confirmationFrame
+widthTextBox.ClearTextOnFocus = false
 addCorner(widthTextBox, 6)
 
 local heightTextBox = Instance.new("TextBox")
@@ -161,6 +161,7 @@ heightTextBox.BackgroundColor3 = confirmationFrame.BackgroundColor3
 heightTextBox.TextSize = 14
 heightTextBox.ZIndex = 20
 heightTextBox.Parent = confirmationFrame
+heightTextBox.ClearTextOnFocus = false
 addCorner(heightTextBox, 6)
 
 if savedConfig.Width and savedConfig.Height then
@@ -203,11 +204,28 @@ applySizeButton.MouseButton1Click:Connect(function()
     local height = tonumber(heightTextBox.Text)
     if width and height then
         MainFrame.Size = UDim2.new(0, width, 0, height)
-        saveConfig({
-            Width = width,
-            Height = height
-        })
+        saveConfig({ Width = width, Height = height })
     end
+end)
+
+local resetButton = Instance.new("TextButton")
+resetButton.Size = UDim2.new(0, 100, 0, 30)
+resetButton.Position = UDim2.new(0.5, 115, 0, 100)
+resetButton.Text = "Reset Size"
+resetButton.TextSize = 13
+resetButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+resetButton.BackgroundColor3 = Color3.fromRGB(100, 100, 100)
+resetButton.BackgroundTransparency = 0.4
+resetButton.ZIndex = 20
+resetButton.Parent = confirmationFrame
+addCorner(resetButton, 6)
+
+resetButton.MouseButton1Click:Connect(function()
+    local defaultSize = UDim2.new(0, 590, 0, 300)
+    MainFrame.Size = defaultSize
+    widthTextBox.Text = tostring(defaultSize.X.Offset)
+    heightTextBox.Text = tostring(defaultSize.Y.Offset)
+    saveConfig({ Width = defaultSize.X.Offset, Height = defaultSize.Y.Offset })
 end)
     
 local MinimizeButton = Instance.new("TextButton")
