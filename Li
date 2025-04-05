@@ -99,11 +99,30 @@ CloseButton.MouseLeave:Connect(function()
     CloseButton.BackgroundTransparency = 1
 end)
 
+local widthLabel = Instance.new("TextLabel")
+widthLabel.Text = "Width"
+widthLabel.Size = UDim2.new(0, 100, 0, 20)
+widthLabel.Position = UDim2.new(0.5, -105, 0.5, -40)
+widthLabel.BackgroundTransparency = 1
+widthLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+widthLabel.TextSize = 12
+widthLabel.ZIndex = 20
+widthLabel.Parent = backgroundOverlay
+
+local heightLabel = Instance.new("TextLabel")
+heightLabel.Text = "Height"
+heightLabel.Size = UDim2.new(0, 100, 0, 20)
+heightLabel.Position = UDim2.new(0.5, 5, 0.5, -40)
+heightLabel.BackgroundTransparency = 1
+heightLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+heightLabel.TextSize = 12
+heightLabel.ZIndex = 20
+heightLabel.Parent = backgroundOverlay
+
 local widthTextBox = Instance.new("TextBox")
 widthTextBox.Size = UDim2.new(0, 100, 0, 30)
 widthTextBox.Position = UDim2.new(0.5, -105, 0.5, -15)
 widthTextBox.Text = tostring(MainFrame.Size.X.Offset)
-widthTextBox.PlaceholderText = "Width"
 widthTextBox.TextColor3 = Color3.fromRGB(255, 255, 255)
 widthTextBox.BackgroundColor3 = confirmationFrame.BackgroundColor3
 widthTextBox.TextSize = 14
@@ -115,36 +134,12 @@ local heightTextBox = Instance.new("TextBox")
 heightTextBox.Size = UDim2.new(0, 100, 0, 30)
 heightTextBox.Position = UDim2.new(0.5, 5, 0.5, -15)
 heightTextBox.Text = tostring(MainFrame.Size.Y.Offset)
-heightTextBox.PlaceholderText = "Height"
 heightTextBox.TextColor3 = Color3.fromRGB(255, 255, 255)
 heightTextBox.BackgroundColor3 = confirmationFrame.BackgroundColor3
 heightTextBox.TextSize = 14
 heightTextBox.ZIndex = 20
 heightTextBox.Parent = backgroundOverlay
 addCorner(heightTextBox, 6)
-
-local applySizeButton = Instance.new("TextButton")
-applySizeButton.Size = UDim2.new(0, 100, 0, 40)
-applySizeButton.Position = UDim2.new(0.5, 10, 0.5, 40)
-applySizeButton.Text = "Apply Size"
-applySizeButton.TextSize = 14
-applySizeButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-applySizeButton.BackgroundColor3 = Color3.fromRGB(0, 150, 0)
-applySizeButton.BackgroundTransparency = 0.4
-applySizeButton.ZIndex = 20
-applySizeButton.Parent = backgroundOverlay
-addCorner(applySizeButton, 6)
-
-applySizeButton.MouseButton1Click:Connect(function()
-    local width = tonumber(widthTextBox.Text)
-    local height = tonumber(heightTextBox.Text)
-
-    if width and height then
-        MainFrame.Size = UDim2.new(0, width, 0, height)
-    else
-        print("Invalid width or height")
-    end
-end)
 
 local deleteButton = Instance.new("TextButton")
 deleteButton.Text = "X"
@@ -153,13 +148,34 @@ deleteButton.TextSize = 13
 deleteButton.TextColor3 = Color3.fromRGB(255, 255, 255)
 deleteButton.BackgroundColor3 = Color3.fromRGB(200, 0, 0)
 deleteButton.BackgroundTransparency = 0.4
-deleteButton.Size = UDim2.new(0.5, -10, 0, 40)
-deleteButton.Position = UDim2.new(0, 5, 1, -45)
+deleteButton.Size = UDim2.new(0, 100, 0, 40)
+deleteButton.Position = UDim2.new(0.5, -105, 0.5, 40)
 deleteButton.Parent = confirmationFrame
-addCorner(deleteButton, 4)
+addCorner(deleteButton, 6)
 
 deleteButton.MouseButton1Click:Connect(function()
     MainFrame:Destroy()
+end)
+
+local applySizeButton = Instance.new("TextButton")
+applySizeButton.Size = UDim2.new(0, 100, 0, 40)
+applySizeButton.Position = UDim2.new(0.5, 5, 0.5, 40)
+applySizeButton.Text = "Apply Size"
+applySizeButton.TextSize = 13
+applySizeButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+applySizeButton.BackgroundColor3 = Color3.fromRGB(0, 150, 0)
+applySizeButton.BackgroundTransparency = 0.4
+applySizeButton.ZIndex = 20
+applySizeButton.Parent = confirmationFrame
+addCorner(applySizeButton, 6)
+
+applySizeButton.MouseButton1Click:Connect(function()
+    local width = tonumber(widthTextBox.Text)
+    local height = tonumber(heightTextBox.Text)
+
+    if width and height then
+        MainFrame.Size = UDim2.new(0, width, 0, height)
+    end
 end)
     
 local MinimizeButton = Instance.new("TextButton")
