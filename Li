@@ -72,9 +72,17 @@ confirmationLabel.Text = "Settings on the menu"
 confirmationLabel.TextSize = 12
 confirmationLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 confirmationLabel.BackgroundTransparency = 1
-confirmationLabel.Size = UDim2.new(1, 0, 0, 50)
+confirmationLabel.Size = UDim2.new(1, 0, 0, 30)
 confirmationLabel.ZIndex = 20
 confirmationLabel.Parent = confirmationFrame
+
+local separator = Instance.new("Frame")
+separator.Size = UDim2.new(1, -20, 0, 1)
+separator.Position = UDim2.new(0, 10, 0, 30)
+separator.BackgroundColor3 = Color3.fromRGB(150, 150, 150)
+separator.BorderSizePixel = 0
+separator.ZIndex = 20
+separator.Parent = confirmationFrame
 
 local CloseButton = Instance.new("TextButton")
 CloseButton.Size = UDim2.new(0, 30, 0, 30)
@@ -102,43 +110,43 @@ end)
 local widthLabel = Instance.new("TextLabel")
 widthLabel.Text = "Width"
 widthLabel.Size = UDim2.new(0, 100, 0, 20)
-widthLabel.Position = UDim2.new(0.5, -105, 0.5, -40)
+widthLabel.Position = UDim2.new(0.5, -105, 0, 40)
 widthLabel.BackgroundTransparency = 1
-widthLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+widthLabel.TextColor3 = Color3.fromRGB(200, 200, 200)
 widthLabel.TextSize = 12
 widthLabel.ZIndex = 20
-widthLabel.Parent = backgroundOverlay
+widthLabel.Parent = confirmationFrame
 
 local heightLabel = Instance.new("TextLabel")
 heightLabel.Text = "Height"
 heightLabel.Size = UDim2.new(0, 100, 0, 20)
-heightLabel.Position = UDim2.new(0.5, 5, 0.5, -40)
+heightLabel.Position = UDim2.new(0.5, 5, 0, 40)
 heightLabel.BackgroundTransparency = 1
-heightLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+heightLabel.TextColor3 = Color3.fromRGB(200, 200, 200)
 heightLabel.TextSize = 12
 heightLabel.ZIndex = 20
-heightLabel.Parent = backgroundOverlay
+heightLabel.Parent = confirmationFrame
 
 local widthTextBox = Instance.new("TextBox")
 widthTextBox.Size = UDim2.new(0, 100, 0, 30)
-widthTextBox.Position = UDim2.new(0.5, -105, 0.5, -15)
+widthTextBox.Position = UDim2.new(0.5, -105, 0, 60)
 widthTextBox.Text = tostring(MainFrame.Size.X.Offset)
 widthTextBox.TextColor3 = Color3.fromRGB(255, 255, 255)
 widthTextBox.BackgroundColor3 = confirmationFrame.BackgroundColor3
 widthTextBox.TextSize = 14
 widthTextBox.ZIndex = 20
-widthTextBox.Parent = backgroundOverlay
+widthTextBox.Parent = confirmationFrame
 addCorner(widthTextBox, 6)
 
 local heightTextBox = Instance.new("TextBox")
 heightTextBox.Size = UDim2.new(0, 100, 0, 30)
-heightTextBox.Position = UDim2.new(0.5, 5, 0.5, -15)
+heightTextBox.Position = UDim2.new(0.5, 5, 0, 60)
 heightTextBox.Text = tostring(MainFrame.Size.Y.Offset)
 heightTextBox.TextColor3 = Color3.fromRGB(255, 255, 255)
 heightTextBox.BackgroundColor3 = confirmationFrame.BackgroundColor3
 heightTextBox.TextSize = 14
 heightTextBox.ZIndex = 20
-heightTextBox.Parent = backgroundOverlay
+heightTextBox.Parent = confirmationFrame
 addCorner(heightTextBox, 6)
 
 local deleteButton = Instance.new("TextButton")
@@ -148,8 +156,8 @@ deleteButton.TextSize = 13
 deleteButton.TextColor3 = Color3.fromRGB(255, 255, 255)
 deleteButton.BackgroundColor3 = Color3.fromRGB(200, 0, 0)
 deleteButton.BackgroundTransparency = 0.4
-deleteButton.Size = UDim2.new(0, 100, 0, 40)
-deleteButton.Position = UDim2.new(0.5, -105, 0.5, 40)
+deleteButton.Size = UDim2.new(0, 100, 0, 30)
+deleteButton.Position = UDim2.new(0.5, -105, 0, 100)
 deleteButton.Parent = confirmationFrame
 addCorner(deleteButton, 6)
 
@@ -158,8 +166,8 @@ deleteButton.MouseButton1Click:Connect(function()
 end)
 
 local applySizeButton = Instance.new("TextButton")
-applySizeButton.Size = UDim2.new(0, 100, 0, 40)
-applySizeButton.Position = UDim2.new(0.5, 5, 0.5, 40)
+applySizeButton.Size = UDim2.new(0, 100, 0, 30)
+applySizeButton.Position = UDim2.new(0.5, 5, 0, 100)
 applySizeButton.Text = "Apply Size"
 applySizeButton.TextSize = 13
 applySizeButton.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -172,7 +180,6 @@ addCorner(applySizeButton, 6)
 applySizeButton.MouseButton1Click:Connect(function()
     local width = tonumber(widthTextBox.Text)
     local height = tonumber(heightTextBox.Text)
-
     if width and height then
         MainFrame.Size = UDim2.new(0, width, 0, height)
     end
