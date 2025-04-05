@@ -87,7 +87,7 @@ CloseButton.Font = Enum.Font.SourceSans
 CloseButton.Parent = MainFrame
 
 CloseButton.MouseButton1Click:Connect(function()
-    backgroundOverlay.Visible = true
+    backgroundOverlay.Visible = not backgroundOverlay.Visible
 end)
 
 CloseButton.MouseEnter:Connect(function()
@@ -100,7 +100,7 @@ end)
 
 local widthTextBox = Instance.new("TextBox")
 widthTextBox.Size = UDim2.new(0, 100, 0, 30)
-widthTextBox.Position = UDim2.new(0.5, -50, 0.5, 50)
+widthTextBox.Position = UDim2.new(0.5, -50, 0.5, -30)
 widthTextBox.Text = tostring(MainFrame.Size.X.Offset)
 widthTextBox.PlaceholderText = "Width"
 widthTextBox.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -112,7 +112,7 @@ addCorner(widthTextBox, 6)
 
 local heightTextBox = Instance.new("TextBox")
 heightTextBox.Size = UDim2.new(0, 100, 0, 30)
-heightTextBox.Position = UDim2.new(0.5, -50, 0.5, 90)
+heightTextBox.Position = UDim2.new(0.5, -50, 0.5, 10)
 heightTextBox.Text = tostring(MainFrame.Size.Y.Offset)
 heightTextBox.PlaceholderText = "Height"
 heightTextBox.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -124,7 +124,7 @@ addCorner(heightTextBox, 6)
 
 local applySizeButton = Instance.new("TextButton")
 applySizeButton.Size = UDim2.new(0, 200, 0, 40)
-applySizeButton.Position = UDim2.new(0.5, -100, 0.5, 130)
+applySizeButton.Position = UDim2.new(0.5, -100, 0.5, 50)
 applySizeButton.Text = "Apply Size"
 applySizeButton.TextSize = 14
 applySizeButton.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -161,16 +161,16 @@ deleteButton.MouseButton1Click:Connect(function()
     MainFrame:Destroy()
 end)
     
-    local MinimizeButton = Instance.new("TextButton")
-    MinimizeButton.Size = UDim2.new(0, 20, 1, 0)
-    MinimizeButton.Position = UDim2.new(1, -50, 0, 0)
-    MinimizeButton.BackgroundTransparency = 1
-    MinimizeButton.Text = "-"
-    MinimizeButton.ZIndex = 19
-    MinimizeButton.TextSize = 16
-    MinimizeButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-    MinimizeButton.Font = Enum.Font.SourceSans
-    MinimizeButton.Parent = TopBar
+local MinimizeButton = Instance.new("TextButton")
+MinimizeButton.Size = UDim2.new(0, 20, 1, 0)
+MinimizeButton.Position = UDim2.new(1, -70, 0, 0)  -- Se coloca al lado izquierdo del ⚙️
+MinimizeButton.BackgroundTransparency = 1
+MinimizeButton.Text = "-"
+MinimizeButton.ZIndex = 19
+MinimizeButton.TextSize = 16
+MinimizeButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+MinimizeButton.Font = Enum.Font.SourceSans
+MinimizeButton.Parent = TopBar
     
     local normalSize = MainFrame.Size
     local minimizedSize = UDim2.new(normalSize.X.Scale, normalSize.X.Offset, 0, 30)
