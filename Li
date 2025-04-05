@@ -42,11 +42,27 @@ MainFrame.Active = true
 MainFrame.Draggable = true
 MainFrame.BackgroundTransparency = 0.8
     addCorner(MainFrame, 7)
+    
+getgenv().configFileName = "configmenu.txt"
 
-local gradient = Instance.new("UIGradient")
-gradient.Parent = MainFrame
-gradient.Color = ColorSequence.new(Color3.fromRGB(0, 255, 100), Color3.fromRGB(0, 180, 0))
-gradient.Rotation = 70
+getgenv().saveConfig = function(stateTable)
+    writefile(getgenv().configFileName, game.HttpService:JSONEncode(stateTable))
+end
+
+getgenv().loadConfig = function()
+    if isfile(getgenv().configFileName) then
+        local success, data = pcall(function()
+            return game.HttpService:JSONDecode(readfile(getgenv().configFileName))
+        end)
+
+        if success and type(data) == "table" then
+            return data
+        end
+    end
+    return {}
+end
+
+getgenv().savedConfig = getgenv().loadConfig()
 
 local backgroundOverlay = Instance.new("Frame")
 backgroundOverlay.Size = UDim2.new(1, 0, 1, 0)
@@ -130,7 +146,6 @@ heightLabel.Parent = confirmationFrame
 local widthTextBox = Instance.new("TextBox")
 widthTextBox.Size = UDim2.new(0, 100, 0, 30)
 widthTextBox.Position = UDim2.new(0.5, -105, 0, 60)
-widthTextBox.Text = tostring(MainFrame.Size.X.Offset)
 widthTextBox.TextColor3 = Color3.fromRGB(255, 255, 255)
 widthTextBox.BackgroundColor3 = confirmationFrame.BackgroundColor3
 widthTextBox.TextSize = 14
@@ -141,13 +156,19 @@ addCorner(widthTextBox, 6)
 local heightTextBox = Instance.new("TextBox")
 heightTextBox.Size = UDim2.new(0, 100, 0, 30)
 heightTextBox.Position = UDim2.new(0.5, 5, 0, 60)
-heightTextBox.Text = tostring(MainFrame.Size.Y.Offset)
 heightTextBox.TextColor3 = Color3.fromRGB(255, 255, 255)
 heightTextBox.BackgroundColor3 = confirmationFrame.BackgroundColor3
 heightTextBox.TextSize = 14
 heightTextBox.ZIndex = 20
 heightTextBox.Parent = confirmationFrame
 addCorner(heightTextBox, 6)
+
+if savedConfig.Width and savedConfig.Height then
+    MainFrame.Size = UDim2.new(0, savedConfig.Width, 0, savedConfig.Height)
+end
+
+widthTextBox.Text = tostring(MainFrame.Size.X.Offset)
+heightTextBox.Text = tostring(MainFrame.Size.Y.Offset)
 
 local deleteButton = Instance.new("TextButton")
 deleteButton.Text = "X"
@@ -182,6 +203,10 @@ applySizeButton.MouseButton1Click:Connect(function()
     local height = tonumber(heightTextBox.Text)
     if width and height then
         MainFrame.Size = UDim2.new(0, width, 0, height)
+        saveConfig({
+            Width = width,
+            Height = height
+        })
     end
 end)
     
