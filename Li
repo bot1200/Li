@@ -67,7 +67,7 @@ confirmationFrame.ZIndex = 19
 addCorner(confirmationFrame, 7)
 
 local confirmationLabel = Instance.new("TextLabel")
-confirmationLabel.Text = "Are you sure you want to Destroy the GUI?"
+confirmationLabel.Text = "Settings on the menu"
 confirmationLabel.TextSize = 12
 confirmationLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 confirmationLabel.BackgroundTransparency = 1
@@ -75,35 +75,11 @@ confirmationLabel.Size = UDim2.new(1, 0, 0, 50)
 confirmationLabel.ZIndex = 20
 confirmationLabel.Parent = confirmationFrame
 
-local yesButton = Instance.new("TextButton")
-yesButton.Text = "Yeah"
-yesButton.ZIndex = 20
-yesButton.TextSize = 13
-yesButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-yesButton.BackgroundColor3 = Color3.fromRGB(200, 0, 0)
-yesButton.BackgroundTransparency = 0.4
-yesButton.Size = UDim2.new(0.5, -10, 0, 40)
-yesButton.Position = UDim2.new(0, 5, 1, -45)
-yesButton.Parent = confirmationFrame
-addCorner(yesButton, 4)
-
-local noButton = Instance.new("TextButton")
-noButton.Text = "No"
-noButton.TextSize = 13
-noButton.ZIndex = 20
-noButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-noButton.BackgroundColor3 = Color3.fromRGB(0, 150, 0)
-noButton.BackgroundTransparency = 0.4
-noButton.Size = UDim2.new(0.5, -10, 0, 40)
-noButton.Position = UDim2.new(0.5, 5, 1, -45)
-noButton.Parent = confirmationFrame
-addCorner(noButton, 4)
-
 local CloseButton = Instance.new("TextButton")
-CloseButton.Size = UDim2.new(0, 20, 0, 20)
-CloseButton.Position = UDim2.new(1, -25, 0, 5)
+CloseButton.Size = UDim2.new(0, 30, 0, 30)
+CloseButton.Position = UDim2.new(1, -35, 0, 5)
 CloseButton.BackgroundTransparency = 1
-CloseButton.Text = "X"
+CloseButton.Text = "⚙️"
 CloseButton.ZIndex = 20
 CloseButton.TextSize = 16
 CloseButton.TextColor3 = Color3.fromRGB(255, 100, 100)
@@ -114,14 +90,6 @@ CloseButton.MouseButton1Click:Connect(function()
     backgroundOverlay.Visible = true
 end)
 
-yesButton.MouseButton1Click:Connect(function()
-    MainFrame:Destroy()
-end)
-
-noButton.MouseButton1Click:Connect(function()
-    backgroundOverlay.Visible = false
-end)
-
 CloseButton.MouseEnter:Connect(function()
     CloseButton.BackgroundTransparency = 0
 end)
@@ -130,26 +98,29 @@ CloseButton.MouseLeave:Connect(function()
     CloseButton.BackgroundTransparency = 1
 end)
 
--- Agregamos los TextBox para el ancho y alto en backgroundOverlay
 local widthTextBox = Instance.new("TextBox")
 widthTextBox.Size = UDim2.new(0, 100, 0, 30)
 widthTextBox.Position = UDim2.new(0.5, -50, 0.5, 50)
+widthTextBox.Text = tostring(MainFrame.Size.X.Offset)
 widthTextBox.PlaceholderText = "Width"
 widthTextBox.TextColor3 = Color3.fromRGB(255, 255, 255)
-widthTextBox.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+widthTextBox.BackgroundColor3 = confirmationFrame.BackgroundColor3
 widthTextBox.TextSize = 14
 widthTextBox.ZIndex = 20
 widthTextBox.Parent = backgroundOverlay
+addCorner(widthTextBox, 6)
 
 local heightTextBox = Instance.new("TextBox")
 heightTextBox.Size = UDim2.new(0, 100, 0, 30)
 heightTextBox.Position = UDim2.new(0.5, -50, 0.5, 90)
+heightTextBox.Text = tostring(MainFrame.Size.Y.Offset)
 heightTextBox.PlaceholderText = "Height"
 heightTextBox.TextColor3 = Color3.fromRGB(255, 255, 255)
-heightTextBox.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+heightTextBox.BackgroundColor3 = confirmationFrame.BackgroundColor3
 heightTextBox.TextSize = 14
 heightTextBox.ZIndex = 20
 heightTextBox.Parent = backgroundOverlay
+addCorner(heightTextBox, 6)
 
 local applySizeButton = Instance.new("TextButton")
 applySizeButton.Size = UDim2.new(0, 200, 0, 40)
@@ -161,7 +132,7 @@ applySizeButton.BackgroundColor3 = Color3.fromRGB(0, 150, 0)
 applySizeButton.BackgroundTransparency = 0.4
 applySizeButton.ZIndex = 20
 applySizeButton.Parent = backgroundOverlay
-addCorner(applySizeButton, 4)
+addCorner(applySizeButton, 6)
 
 applySizeButton.MouseButton1Click:Connect(function()
     local width = tonumber(widthTextBox.Text)
@@ -170,9 +141,24 @@ applySizeButton.MouseButton1Click:Connect(function()
     if width and height then
         MainFrame.Size = UDim2.new(0, width, 0, height)
     else
-        -- Si los valores no son válidos, puedes agregar algún mensaje de error o lógica adicional.
         print("Invalid width or height")
     end
+end)
+
+local deleteButton = Instance.new("TextButton")
+deleteButton.Text = "X"
+deleteButton.ZIndex = 20
+deleteButton.TextSize = 13
+deleteButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+deleteButton.BackgroundColor3 = Color3.fromRGB(200, 0, 0)
+deleteButton.BackgroundTransparency = 0.4
+deleteButton.Size = UDim2.new(0.5, -10, 0, 40)
+deleteButton.Position = UDim2.new(0, 5, 1, -45)
+deleteButton.Parent = confirmationFrame
+addCorner(deleteButton, 4)
+
+deleteButton.MouseButton1Click:Connect(function()
+    MainFrame:Destroy()
 end)
     
     local MinimizeButton = Instance.new("TextButton")
