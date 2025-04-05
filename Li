@@ -32,50 +32,50 @@ function Library:CreateUI(title, description, allowedUserIds)
     local ScreenGui = Instance.new("ScreenGui")
     ScreenGui.Parent = mainGui
 
-self.MainFrame = Instance.new("Frame")
-self.MainFrame.Size = UDim2.new(0, 590, 0, 300)
-self.MainFrame.Position = UDim2.new(0.5, -self.MainFrame.Size.X.Offset / 2, 0.5, -self.MainFrame.Size.Y.Offset / 2 - 30)
-self.MainFrame.BackgroundColor3 = Color3.fromRGB(138, 43, 226)
-self.MainFrame.BorderSizePixel = 0
-self.MainFrame.Parent = ScreenGui
-self.MainFrame.Active = true
-self.MainFrame.Draggable = true
-self.MainFrame.BackgroundTransparency = 0.8
-    addCorner(self.MainFrame, 7)
+    local MainFrame = Instance.new("Frame")
+MainFrame.Size = UDim2.new(0, 590, 0, 300)
+MainFrame.Position = UDim2.new(0.5, -MainFrame.Size.X.Offset / 2, 0.5, -MainFrame.Size.Y.Offset / 2 - 30)
+MainFrame.BackgroundColor3 = Color3.fromRGB(138, 43, 226)
+MainFrame.BorderSizePixel = 0
+MainFrame.Parent = ScreenGui
+MainFrame.Active = true
+MainFrame.Draggable = true
+MainFrame.BackgroundTransparency = 0.8
+    addCorner(MainFrame, 7)
 
-    local gradient = Instance.new("UIGradient")
-    gradient.Parent = self.MainFrame
-    gradient.Color = ColorSequence.new(Color3.fromRGB(0, 255, 100), Color3.fromRGB(0, 180, 0))
-    gradient.Rotation = 70
+local gradient = Instance.new("UIGradient")
+gradient.Parent = MainFrame
+gradient.Color = ColorSequence.new(Color3.fromRGB(0, 255, 100), Color3.fromRGB(0, 180, 0))
+gradient.Rotation = 70
 
-    local backgroundOverlay = Instance.new("Frame")
-    backgroundOverlay.Size = UDim2.new(1, 0, 1, 0)
-    backgroundOverlay.Position = UDim2.new(0, 0, 0, 0)
-    backgroundOverlay.ZIndex = 18
-    backgroundOverlay.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
-    backgroundOverlay.BackgroundTransparency = 0.4
-    backgroundOverlay.Parent = self.MainFrame
-    backgroundOverlay.Visible = false
+local backgroundOverlay = Instance.new("Frame")
+backgroundOverlay.Size = UDim2.new(1, 0, 1, 0)
+backgroundOverlay.Position = UDim2.new(0, 0, 0, 0)
+backgroundOverlay.ZIndex = 18
+backgroundOverlay.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+backgroundOverlay.BackgroundTransparency = 0.4
+backgroundOverlay.Parent = MainFrame
+backgroundOverlay.Visible = false
 
-    local confirmationFrame = Instance.new("Frame")
-    confirmationFrame.Size = UDim2.new(0, 300, 0, 150)
-    confirmationFrame.Position = UDim2.new(0.5, -150, 0.5, -75)
-    confirmationFrame.BackgroundColor3 = FrameContenedor
-    confirmationFrame.BackgroundTransparency = 0.4
-    confirmationFrame.Parent = backgroundOverlay
-    confirmationFrame.ZIndex = 19
-    addCorner(confirmationFrame, 7)
+local confirmationFrame = Instance.new("Frame")
+confirmationFrame.Size = UDim2.new(0, 300, 0, 150)
+confirmationFrame.Position = UDim2.new(0.5, -150, 0.5, -75)
+confirmationFrame.BackgroundColor3 = FrameContenedor
+confirmationFrame.BackgroundTransparency = 0.4
+confirmationFrame.Parent = backgroundOverlay
+confirmationFrame.ZIndex = 19
+addCorner(confirmationFrame, 7)
 
-    local confirmationLabel = Instance.new("TextLabel")
-    confirmationLabel.Text = "Are you sure you want to Destroy the GUI?"
-    confirmationLabel.TextSize = 12
-    confirmationLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
-    confirmationLabel.BackgroundTransparency = 1
-    confirmationLabel.Size = UDim2.new(1, 0, 0, 50)
-    confirmationLabel.ZIndex = 20
-    confirmationLabel.Parent = confirmationFrame
+local confirmationLabel = Instance.new("TextLabel")
+confirmationLabel.Text = "Are you sure you want to Destroy the GUI?"
+confirmationLabel.TextSize = 12
+confirmationLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+confirmationLabel.BackgroundTransparency = 1
+confirmationLabel.Size = UDim2.new(1, 0, 0, 50)
+confirmationLabel.ZIndex = 20
+confirmationLabel.Parent = confirmationFrame
 
-    local yesButton = Instance.new("TextButton")
+local yesButton = Instance.new("TextButton")
 yesButton.Text = "Yeah"
 yesButton.ZIndex = 20
 yesButton.TextSize = 13
@@ -99,36 +99,81 @@ noButton.Position = UDim2.new(0.5, 5, 1, -45)
 noButton.Parent = confirmationFrame
 addCorner(noButton, 4)
 
-    local CloseButton = Instance.new("TextButton")
-    CloseButton.Size = UDim2.new(0, 20, 0, 20)
-    CloseButton.Position = UDim2.new(1, -25, 0, 5)
+local CloseButton = Instance.new("TextButton")
+CloseButton.Size = UDim2.new(0, 20, 0, 20)
+CloseButton.Position = UDim2.new(1, -25, 0, 5)
+CloseButton.BackgroundTransparency = 1
+CloseButton.Text = "X"
+CloseButton.ZIndex = 20
+CloseButton.TextSize = 16
+CloseButton.TextColor3 = Color3.fromRGB(255, 100, 100)
+CloseButton.Font = Enum.Font.SourceSans
+CloseButton.Parent = MainFrame
+
+CloseButton.MouseButton1Click:Connect(function()
+    backgroundOverlay.Visible = true
+end)
+
+yesButton.MouseButton1Click:Connect(function()
+    MainFrame:Destroy()
+end)
+
+noButton.MouseButton1Click:Connect(function()
+    backgroundOverlay.Visible = false
+end)
+
+CloseButton.MouseEnter:Connect(function()
+    CloseButton.BackgroundTransparency = 0
+end)
+
+CloseButton.MouseLeave:Connect(function()
     CloseButton.BackgroundTransparency = 1
-    CloseButton.Text = "X"
-    CloseButton.ZIndex = 20
-    CloseButton.TextSize = 16
-    CloseButton.TextColor3 = Color3.fromRGB(255, 100, 100)
-    CloseButton.Font = Enum.Font.SourceSans
-    CloseButton.Parent = self.MainFrame
+end)
 
-    CloseButton.MouseButton1Click:Connect(function()
-        backgroundOverlay.Visible = true
-    end)
+-- Agregamos los TextBox para el ancho y alto en backgroundOverlay
+local widthTextBox = Instance.new("TextBox")
+widthTextBox.Size = UDim2.new(0, 100, 0, 30)
+widthTextBox.Position = UDim2.new(0.5, -50, 0.5, 50)
+widthTextBox.PlaceholderText = "Width"
+widthTextBox.TextColor3 = Color3.fromRGB(255, 255, 255)
+widthTextBox.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+widthTextBox.TextSize = 14
+widthTextBox.ZIndex = 20
+widthTextBox.Parent = backgroundOverlay
 
-    yesButton.MouseButton1Click:Connect(function()
-        self.MainFrame:Destroy()
-    end)
+local heightTextBox = Instance.new("TextBox")
+heightTextBox.Size = UDim2.new(0, 100, 0, 30)
+heightTextBox.Position = UDim2.new(0.5, -50, 0.5, 90)
+heightTextBox.PlaceholderText = "Height"
+heightTextBox.TextColor3 = Color3.fromRGB(255, 255, 255)
+heightTextBox.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+heightTextBox.TextSize = 14
+heightTextBox.ZIndex = 20
+heightTextBox.Parent = backgroundOverlay
 
-    noButton.MouseButton1Click:Connect(function()
-        backgroundOverlay.Visible = false
-    end)
+local applySizeButton = Instance.new("TextButton")
+applySizeButton.Size = UDim2.new(0, 200, 0, 40)
+applySizeButton.Position = UDim2.new(0.5, -100, 0.5, 130)
+applySizeButton.Text = "Apply Size"
+applySizeButton.TextSize = 14
+applySizeButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+applySizeButton.BackgroundColor3 = Color3.fromRGB(0, 150, 0)
+applySizeButton.BackgroundTransparency = 0.4
+applySizeButton.ZIndex = 20
+applySizeButton.Parent = backgroundOverlay
+addCorner(applySizeButton, 4)
 
-    CloseButton.MouseEnter:Connect(function()
-        CloseButton.BackgroundTransparency = 0
-    end)
+applySizeButton.MouseButton1Click:Connect(function()
+    local width = tonumber(widthTextBox.Text)
+    local height = tonumber(heightTextBox.Text)
 
-    CloseButton.MouseLeave:Connect(function()
-        CloseButton.BackgroundTransparency = 1
-    end)
+    if width and height then
+        MainFrame.Size = UDim2.new(0, width, 0, height)
+    else
+        -- Si los valores no son válidos, puedes agregar algún mensaje de error o lógica adicional.
+        print("Invalid width or height")
+    end
+end)
     
     local MinimizeButton = Instance.new("TextButton")
     MinimizeButton.Size = UDim2.new(0, 20, 1, 0)
@@ -141,14 +186,14 @@ addCorner(noButton, 4)
     MinimizeButton.Font = Enum.Font.SourceSans
     MinimizeButton.Parent = TopBar
     
-    local normalSize = self.MainFrame.Size
+    local normalSize = MainFrame.Size
     local minimizedSize = UDim2.new(normalSize.X.Scale, normalSize.X.Offset, 0, 30)
     local tweenInfoMinimize = TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
 
     MinimizeButton.MouseButton1Click:Connect(function()
-        local isMinimized = self.MainFrame.Size == minimizedSize
+        local isMinimized = MainFrame.Size == minimizedSize
         local targetSize = isMinimized and normalSize or minimizedSize
-        TweenService:Create(self.MainFrame, tweenInfoMinimize, { Size = targetSize }):Play()
+        TweenService:Create(MainFrame, tweenInfoMinimize, { Size = targetSize }):Play()
         MinimizeButton.Text = isMinimized and "-" or "+"
     end)
 
@@ -161,7 +206,7 @@ addCorner(noButton, 4)
     end)
 
     local border = Instance.new("UIStroke")
-    border.Parent = self.MainFrame
+    border.Parent = MainFrame
     border.Thickness = 2
     border.Color = bordes
     border.Transparency = 0.5
@@ -197,7 +242,7 @@ addCorner(noButton, 4)
 
     local function toggleButton()
         isActive = not isActive
-        self.MainFrame.Visible = isActive
+        MainFrame.Visible = isActive
         clickSound:Play()
 
         button:TweenSize(UDim2.new(0, 65, 0, 55), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.2, true)
@@ -217,7 +262,7 @@ addCorner(noButton, 4)
     TopBar.BorderSizePixel = 0
     TopBar.BackgroundTransparency = 0.5
     TopBar.ZIndex = 10
-    TopBar.Parent = self.MainFrame
+    TopBar.Parent = MainFrame
     addCorner(TopBar, 5)
 
     local Line = Instance.new("Frame")
@@ -259,7 +304,7 @@ addCorner(noButton, 4)
     TabsContainer.BorderSizePixel = 0
     TabsContainer.CanvasSize = UDim2.new(0, 0, 0, 0)
     TabsContainer.ScrollBarThickness = 0
-    TabsContainer.Parent = self.MainFrame
+    TabsContainer.Parent = MainFrame
     TabsContainer.BackgroundTransparency = 1
     addCorner(TabsContainer, 5)
 
@@ -277,7 +322,7 @@ addCorner(noButton, 4)
     Container.Position = UDim2.new(0.3, 0, 0, 30)
     Container.BackgroundColor3 = Color3.fromRGB(0, 140, 0)
     Container.BorderSizePixel = 0
-    Container.Parent = self.MainFrame
+    Container.Parent = MainFrame
     Container.BackgroundTransparency = 1
     addCorner(Container, 5)
 
