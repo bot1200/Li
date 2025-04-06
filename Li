@@ -8,7 +8,7 @@ end
 
 local mainGui = Instance.new("ScreenGui")
 mainGui.Parent = coreGui
-print("xd")
+print("nosexd")
 
 local function addCorner(instance, radius)
     local corner = Instance.new("UICorner")
@@ -482,7 +482,7 @@ addCorner(tabButton, 10)
     tabButton.MouseButton1Click:Connect(function()
         animarBrillo()
         local sonido = Instance.new("Sound")
-    sonido.SoundId = "16480549841"
+    sonido.SoundId = "rbxassetid://16480549841"
     sonido.Volume = 0.5
     sonido.PlayOnRemove = true
     sonido.Parent = tabButton
