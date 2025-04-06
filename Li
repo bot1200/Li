@@ -8,7 +8,7 @@ end
 
 local mainGui = Instance.new("ScreenGui")
 mainGui.Parent = coreGui
-print("nosexd")
+print("xd")
 
 local function addCorner(instance, radius)
     local corner = Instance.new("UICorner")
@@ -114,6 +114,13 @@ CloseButton.Font = Enum.Font.SourceSans
 CloseButton.Parent = MainFrame
 
 CloseButton.MouseButton1Click:Connect(function()
+    local sonido = Instance.new("Sound")
+    sonido.SoundId = "rbxassetid://17208399163"
+    sonido.Volume = 0.5
+    sonido.PlayOnRemove = true
+    sonido.Parent = CloseButton
+    sonido:Destroy()
+
     backgroundOverlay.Visible = not backgroundOverlay.Visible
 end)
 
@@ -871,9 +878,16 @@ addCorner(toggleIndicator, 6)
     end
 
     toggleButton.MouseButton1Click:Connect(function()
-        defaultState = not defaultState
-        updateToggle(defaultState)
-    end)
+    local sonido = Instance.new("Sound")
+    sonido.SoundId = "rbxassetid://99437156604053"
+    sonido.Volume = 0.5
+    sonido.PlayOnRemove = true
+    sonido.Parent = toggleButton
+    sonido:Destroy()
+
+    defaultState = not defaultState
+    updateToggle(defaultState)
+end)
 
     updateToggle(defaultState)
     
@@ -884,7 +898,7 @@ for _, child in ipairs(container:GetChildren()) do
     end
 end
 if count % 4 == 0 then
-    task.wait(0.3)
+    task.wait(0.2)
 end
 
     return toggleFrame, label
