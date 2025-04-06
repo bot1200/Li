@@ -8,7 +8,7 @@ end
 
 local mainGui = Instance.new("ScreenGui")
 mainGui.Parent = coreGui
-print("lib")
+print("xd")
 
 local function addCorner(instance, radius)
     local corner = Instance.new("UICorner")
@@ -596,7 +596,7 @@ function Library.addButton(container, buttonText, descriptionText, callback)
     end)
 
     local sonido = Instance.new("Sound")
-    sonido.SoundId = "rbxassetid://15675059323"
+    sonido.SoundId = "rbxassetid://99437156604053"
     sonido.Volume = 0.5
     sonido.PlayOnRemove = true
     sonido.Parent = button
