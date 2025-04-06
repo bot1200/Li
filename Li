@@ -8,7 +8,7 @@ end
 
 local mainGui = Instance.new("ScreenGui")
 mainGui.Parent = coreGui
-print("lib")
+print("libxd")
 
 local function addCorner(instance, radius)
     local corner = Instance.new("UICorner")
@@ -481,7 +481,13 @@ addCorner(tabButton, 10)
 
     tabButton.MouseButton1Click:Connect(function()
         animarBrillo()
-
+        local sonido = Instance.new("Sound")
+    sonido.SoundId = "rbxassetid://12221967"
+    sonido.Volume = 0.5
+    sonido.PlayOnRemove = true
+    sonido.Parent = tabButton
+    sonido:Destroy()
+    
         for _, button in pairs(TabsContainer:GetChildren()) do
             if button:IsA("TextButton") then
                 button.BackgroundColor3 = main
@@ -1166,10 +1172,8 @@ local borderStroke = Instance.new("UIStroke")
 borderStroke.Thickness = 2
 borderStroke.Color = Color3.fromRGB(255, 255, 255)
 borderStroke.Parent = borderFrame
+addCorner(textboxFrame, redondoContenedor)
 
-if addCorner then
-    addCorner(textboxFrame, redondoContenedor)
-end
 addCorner(borderFrame, redondoContenedor)
 local label = Instance.new("TextLabel")
 label.Size = UDim2.new(0, 100, 1, 0)
@@ -1199,12 +1203,9 @@ textBox.Parent = textboxFrame
 textBox.BackgroundColor3 = ColorContenedordelElementos
 textBox.TextColor3 = Color3.fromRGB(255, 255, 255)
 textboxFrame.BackgroundColor3 = FrameContenedor
+addCorner(textBox, 5)
 
-    if addCorner then
-        addCorner(textBox, 5)
-    end
-
-    textBox.FocusLost:Connect(function(enterPressed)
+textBox.FocusLost:Connect(function(enterPressed)
         if enterPressed and callback then
             callback(textBox.Text)
         end
