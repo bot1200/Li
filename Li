@@ -8,7 +8,7 @@ end
 
 local mainGui = Instance.new("ScreenGui")
 mainGui.Parent = coreGui
-print("libxd")
+print("lib")
 
 local function addCorner(instance, radius)
     local corner = Instance.new("UICorner")
@@ -291,7 +291,7 @@ MinimizeButton.Parent = TopBar
     UICorner.CornerRadius = UDim.new(0, 10)
     UICorner.Parent = button
 
-    clickSound.SoundId = "rbxassetid://1673280232"
+    clickSound.SoundId = "rbxassetid://10066968815"
     clickSound.Parent = button
 
     local isActive = true
@@ -482,7 +482,7 @@ addCorner(tabButton, 10)
     tabButton.MouseButton1Click:Connect(function()
         animarBrillo()
         local sonido = Instance.new("Sound")
-    sonido.SoundId = "rbxassetid://12221967"
+    sonido.SoundId = "16480549841"
     sonido.Volume = 0.5
     sonido.PlayOnRemove = true
     sonido.Parent = tabButton
@@ -577,30 +577,33 @@ function Library.addButton(container, buttonText, descriptionText, callback)
     local image = Instance.new("ImageLabel")
     image.Size = UDim2.new(1, 0, 1, 0)
     image.Image = "rbxassetid://132454918588980"
-    image.BackgroundTransparency = 0
+    image.BackgroundTransparency = 0.9
     image.Parent = imageFrame
 
-    -- Crear un Tween para el efecto de brillo gris
     local tweenService = game:GetService("TweenService")
     local tweenInfo = TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out, 0, false, 0)
     local goal = {BackgroundColor3 = Color3.fromRGB(200, 200, 200)}  -- Gris claro
 
-    local originalColor = button.BackgroundColor3  -- Guardamos el color original
+    local originalColor = button.BackgroundColor3
 
     local function onButtonClick()
-        -- Iniciar el tween
-        local tween = tweenService:Create(button, tweenInfo, goal)
-        tween:Play()
+    local tween = tweenService:Create(button, tweenInfo, goal)
+    tween:Play()
 
-        -- Volver al color original después de un pequeño retraso
-        tween.Completed:Connect(function()
-            task.wait(0.1)  -- Esperar para un efecto más realista
-            button.BackgroundColor3 = originalColor
-        end)
+    tween.Completed:Connect(function()
+        task.wait(0.1)
+        button.BackgroundColor3 = originalColor
+    end)
 
-        -- Llamar al callback
-        callback()
-    end
+    local sonido = Instance.new("Sound")
+    sonido.SoundId = "rbxassetid://15675059323"
+    sonido.Volume = 0.5
+    sonido.PlayOnRemove = true
+    sonido.Parent = button
+    sonido:Destroy()
+
+    callback()
+end
 
     button.MouseButton1Click:Connect(onButtonClick)
 
@@ -611,7 +614,7 @@ function Library.addButton(container, buttonText, descriptionText, callback)
         end
     end
     if count % 4 == 0 then
-        task.wait(0.3)
+        task.wait(0.2)
     end
 
     return button, label
