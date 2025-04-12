@@ -1177,59 +1177,71 @@ dropdownFrame.Position = UDim2.new(0, 250, 0, 5)
 end
 
 function Library.addTextbox(container, labelText, placeholderText, defaultText, callback)
-local textboxFrame = Instance.new("Frame")
-textboxFrame.Size = TamanoContenedor
-textboxFrame.BackgroundTransparency = TransparenciaContenedor
-textboxFrame.Parent = container
+    local textboxFrame = Instance.new("Frame")
+    textboxFrame.Size = TamanoContenedor
+    textboxFrame.BackgroundTransparency = TransparenciaContenedor
+    textboxFrame.Parent = container
 
     local borderFrame = Instance.new("Frame")
-borderFrame.Size = UDim2.new(1, 0, 1, 0)
-borderFrame.Position = UDim2.new(0, -2, 0, 0)
-borderFrame.BackgroundTransparency = 1
-borderFrame.ZIndex = textboxFrame.ZIndex -1
-borderFrame.Parent = textboxFrame
+    borderFrame.Size = UDim2.new(1, 0, 1, 0)
+    borderFrame.Position = UDim2.new(0, -2, 0, 0)
+    borderFrame.BackgroundTransparency = 1
+    borderFrame.ZIndex = textboxFrame.ZIndex -1
+    borderFrame.Parent = textboxFrame
 
-local borderStroke = Instance.new("UIStroke")
-borderStroke.Thickness = 2
-borderStroke.Color = Color3.fromRGB(255, 255, 255)
-borderStroke.Parent = borderFrame
-addCorner(textboxFrame, redondoContenedor)
+    local borderStroke = Instance.new("UIStroke")
+    borderStroke.Thickness = 2
+    borderStroke.Color = Color3.fromRGB(255, 255, 255)
+    borderStroke.Parent = borderFrame
+    addCorner(textboxFrame, redondoContenedor)
+    addCorner(borderFrame, redondoContenedor)
 
-addCorner(borderFrame, redondoContenedor)
-local label = Instance.new("TextLabel")
-label.Size = UDim2.new(0, 100, 1, 0)
-label.Position = UDim2.new(0, 10, 0, 0)
-label.Text = labelText
-label.TextSize = 13
-label.Font = Enum.Font.Gotham
-label.TextXAlignment = Enum.TextXAlignment.Left
-label.TextColor3 = Color3.fromRGB(255, 255, 255)
-label.BackgroundTransparency = 1
-label.Parent = textboxFrame
+    local label = Instance.new("TextLabel")
+    label.Size = UDim2.new(0, 100, 1, 0)
+    label.Position = UDim2.new(0, 10, 0, 0)
+    label.Text = labelText
+    label.TextSize = 13
+    label.Font = Enum.Font.Gotham
+    label.TextXAlignment = Enum.TextXAlignment.Left
+    label.TextColor3 = Color3.fromRGB(255, 255, 255)
+    label.BackgroundTransparency = 1
+    label.Parent = textboxFrame
 
-local textBox = Instance.new("TextBox")
-textBox.Size = UDim2.new(0, 120, 0, 30)
-textBox.Position = UDim2.new(0, 270, 0, 5)
-textBox.Text = defaultText
-textBox.PlaceholderText = placeholderText
-textBox.Font = Enum.Font.Gotham
-textBox.TextSize = 14
-textBox.ClearTextOnFocus = false
-textBox.TextWrapped = true
-textBox.BackgroundTransparency = TransparenciaContenedordelElementos
-textBox.TextColor3 = Color3.fromRGB(255, 255, 255)
-textBox.BackgroundColor3 = Color3.fromRGB(0, 180, 0)
-textBox.Parent = textboxFrame
+    local enterButton = Instance.new("TextButton")
+    enterButton.Size = UDim2.new(0, 30, 0, 30)
+    enterButton.Position = UDim2.new(0, 230, 0, 5)
+    enterButton.BackgroundColor3 = Color3.fromRGB(100, 100, 100)
+    enterButton.Text = "E\nN\nT\nE\nR"
+    enterButton.TextSize = 10
+    enterButton.Font = Enum.Font.Gotham
+    enterButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+    enterButton.AutoButtonColor = true
+    enterButton.Parent = textboxFrame
+    addCorner(enterButton, 8)
 
-textBox.BackgroundColor3 = ColorContenedordelElementos
-textBox.TextColor3 = Color3.fromRGB(255, 255, 255)
-textboxFrame.BackgroundColor3 = FrameContenedor
-addCorner(textBox, 5)
+    local textBox = Instance.new("TextBox")
+    textBox.Size = UDim2.new(0, 120, 0, 30)
+    textBox.Position = UDim2.new(0, 270, 0, 5)
+    textBox.Text = defaultText
+    textBox.PlaceholderText = placeholderText
+    textBox.Font = Enum.Font.Gotham
+    textBox.TextSize = 14
+    textBox.ClearTextOnFocus = false
+    textBox.TextWrapped = true
+    textBox.BackgroundTransparency = TransparenciaContenedordelElementos
+    textBox.TextColor3 = Color3.fromRGB(255, 255, 255)
+    textBox.BackgroundColor3 = ColorContenedordelElementos
+    textBox.Parent = textboxFrame
+    addCorner(textBox, 5)
 
-textBox.FocusLost:Connect(function(enterPressed)
+    textBox.FocusLost:Connect(function(enterPressed)
         if enterPressed and callback then
             callback(textBox.Text)
         end
+    end)
+
+    enterButton.MouseButton1Click:Connect(function()
+        textBox:ReleaseFocus()
     end)
 end
 
